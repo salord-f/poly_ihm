@@ -1,4 +1,4 @@
-package fr.polytech.ihm;
+package fr.polytech.ihm.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
