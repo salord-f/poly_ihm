@@ -2,6 +2,7 @@ package fr.polytech.ihm;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
@@ -42,5 +43,13 @@ public class IncidentController {
 
     @FXML
     private Label email;
+
+
+    private Image orange = new Image("file:./src/main/resources/images/orange.png");
+
+    @FXML
+    public void initialize() {
+        urgenceIcon.setImage(orange);
+    }
 
 }
