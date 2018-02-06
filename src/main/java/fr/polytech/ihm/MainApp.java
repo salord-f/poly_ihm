@@ -20,17 +20,22 @@ public class MainApp extends Application {
 
         log.info("Starting Hello JavaFX and Maven demonstration application");
 
-        String fxmlFile = "/fxml/incidents.fxml";
+        String fxmlFile = "/fxml/declaration.fxml";
         log.debug("Loading FXML for main view from: {}", fxmlFile);
         FXMLLoader loader = new FXMLLoader();
         Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
 
         log.debug("Showing JFX scene");
-        Scene scene = new Scene(rootNode, 400, 200);
+        Scene scene = new Scene(rootNode, 800, 600);
         scene.getStylesheets().add("/styles/styles.css");
 
-        stage.setTitle("Hello JavaFX and Maven");
+        stage.setTitle("Poly'Blem");
         stage.setScene(scene);
+        stage.setMinWidth(800);
+        stage.setMaxWidth(800);
+        stage.setMaxHeight(600);
+        stage.setMinHeight(600);
+
         stage.show();
     }
 }
