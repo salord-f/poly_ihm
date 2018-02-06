@@ -15,10 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.DeclarationController">
    <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Déclaration" textAlignment="CENTER" wrappingWidth="193.5703125" BorderPane.alignment="CENTER">
+      <Text fx:id="declarationTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Déclaration" textAlignment="CENTER" wrappingWidth="200" BorderPane.alignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
@@ -28,15 +27,15 @@
       </Text>
    </top>
    <center>
-      <BorderPane maxWidth="600.0" BorderPane.alignment="CENTER">
+      <BorderPane maxWidth="800.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="20.0" left="200.0" right="200.0" top="20.0" />
+            <Insets bottom="20.0" top="20.0" />
          </BorderPane.margin>
          <center>
-            <GridPane maxWidth="600.0" minWidth="600.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="432.0" minWidth="10.0" prefWidth="369.3333740234375" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="536.0" minWidth="10.0" prefWidth="510.6666259765625" />
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="35.0" />
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="65.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -50,105 +49,108 @@
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie : " GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                  <Text fx:id="categorieLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie : " GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
-                  <ComboBox prefHeight="27.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                  <ComboBox fx:id="categorie" prefHeight="27.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <GridPane.margin>
-                        <Insets left="5.0" top="5.0" />
+                        <Insets left="5.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Titre* : " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Text fx:id="titreLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre* : " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
-                  <TextField maxHeight="24.0" maxWidth="300.0" prefHeight="24.0" prefWidth="300.0" promptText="Entrer un titre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <TextField fx:id="titre" maxHeight="24.0" maxWidth="300.0" prefHeight="24.0" prefWidth="300.0" promptText="Entrer un titre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
-                        <Insets left="5.0" top="5.0" />
+                        <Insets left="5.0" />
                      </GridPane.margin>
                   </TextField>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description : " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets top="5.0" />
+                     </GridPane.margin>
                   </Text>
-                  <TextArea maxWidth="300.0" prefHeight="200.0" prefWidth="300.0" promptText="Entrer une description du problème (facultatif)" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                  <TextArea fx:id="description" maxWidth="300.0" prefHeight="200.0" prefWidth="300.0" promptText="Entrer une description du problème (facultatif)" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextArea>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image : " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image : " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button maxHeight="24.0" maxWidth="150.0" minHeight="24.0" minWidth="150.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="150.0" text="Joindre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                  <Button fx:id="join" maxHeight="24.0" maxWidth="150.0" minHeight="24.0" minWidth="150.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="150.0" text="Joindre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
-                        <Insets left="5.0" top="5.0" />
+                        <Insets left="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation : " GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation : " GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
-                  <FlowPane maxWidth="300.0" prefHeight="200.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                  <FlowPane maxWidth="300.0" prefHeight="200.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <children>
-                        <ComboBox prefWidth="100.0">
+                        <ComboBox fx:id="localization" prefWidth="100.0">
                            <FlowPane.margin>
                               <Insets left="5.0" top="5.0" />
                            </FlowPane.margin>
                         </ComboBox>
-                        <TextField prefHeight="27.0" prefWidth="190.0" promptText="ex : pièce, etc.">
+                        <TextField fx:id="localizationDetail" prefHeight="27.0" prefWidth="190.0" promptText="ex : pièce, etc.">
                            <FlowPane.margin>
                               <Insets left="5.0" top="5.0" />
                            </FlowPane.margin>
                         </TextField>
                      </children>
                   </FlowPane>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Urgence : " GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Urgence : " GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
-                  <FlowPane hgap="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                      <children>
-                        <RadioButton mnemonicParsing="false" selected="true" text="Aucune">
+                        <RadioButton fx:id="urgenceAucune" mnemonicParsing="false" selected="true" text="Aucune">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                            <FlowPane.margin>
                               <Insets left="5.0" />
                            </FlowPane.margin>
                            <toggleGroup>
-                              <ToggleGroup fx:id="Urgence" />
+                              <ToggleGroup fx:id="urgence" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Faible" toggleGroup="$Urgence">
+                        <RadioButton fx:id="urgenceFaible" mnemonicParsing="false" selected="true" text="Faible" toggleGroup="$urgence">
                            <FlowPane.margin>
                               <Insets />
                            </FlowPane.margin>
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Moyenne" toggleGroup="$Urgence">
+                        <RadioButton fx:id="urgenceMoyenne" mnemonicParsing="false" selected="true" text="Moyenne" toggleGroup="$urgence">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                            <FlowPane.margin>
                               <Insets />
                            </FlowPane.margin>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Forte" toggleGroup="$Urgence">
+                        <RadioButton fx:id="urgenceForte" mnemonicParsing="false" selected="true" text="Forte" toggleGroup="$urgence">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="12.0" />
                            </font>
                            <FlowPane.margin>
                               <Insets />
@@ -159,34 +161,34 @@
                         <Insets top="5.0" />
                      </GridPane.margin>
                   </FlowPane>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email* : " GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email* : " GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
-                  <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                      <children>
-                        <TextField>
+                        <TextField fx:id="email">
                            <FlowPane.margin>
                               <Insets left="5.0" top="5.0" />
                            </FlowPane.margin>
                         </TextField>
-                        <ComboBox promptText="domaine">
+                        <ComboBox fx:id="emaileDomaine" promptText="domaine">
                            <FlowPane.margin>
                               <Insets top="5.0" />
                            </FlowPane.margin>
                         </ComboBox>
                      </children>
                   </FlowPane>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* champs obligatoires." GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* champs obligatoires." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
                   <FlowPane hgap="100.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <children>
-                        <Button alignment="TOP_CENTER" maxHeight="35.0" maxWidth="95.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="95.0" text="Envoyer">
+                        <Button fx:id="envoyer" alignment="TOP_CENTER" maxHeight="35.0" maxWidth="95.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="95.0" text="Envoyer">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button alignment="TOP_CENTER" maxHeight="35.0" maxWidth="95.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="95.0" text="Retour">
+                        <Button fx:id="retour" alignment="TOP_CENTER" maxHeight="35.0" maxWidth="95.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="95.0" text="Retour">
                            <font>
                               <Font size="18.0" />
                            </font>
