@@ -1,11 +1,11 @@
 package fr.polytech.ihm.controller;
 
-import fr.polytech.ihm.model.Incident;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 public class ViewIncidentController {
@@ -32,6 +32,36 @@ public class ViewIncidentController {
     private Label trieCat;
 
     @FXML
-    private ListView<Incident> listeViewIncidents;
+    private ListView<?> listeViewIncidents;
+
+    @FXML
+    void openNewDeclaration(MouseEvent event) {
+
+    }
+
+    @FXML
+    void orderByCategory(MouseEvent event) {
+
+    }
+
+    @FXML
+    void orderByClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void orderByDate(MouseEvent event) {
+
+    }
+
+    @FXML
+    void orderByUrgence(MouseEvent event) {
+
+    }
+
+    @FXML
+    void search(MouseEvent event) {
+
+    }
 
 }

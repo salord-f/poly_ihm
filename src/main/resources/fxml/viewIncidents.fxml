@@ -16,10 +16,13 @@
   <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
-            <Label text="Incidents" BorderPane.alignment="CENTER">
+            <Label text="Incidents" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="25.0" />
+                  <Font size="36.0" />
                </font>
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
             </Label>
          </top>
          <center>
@@ -59,10 +62,10 @@
                      </rowConstraints>
                      <children>
                         <Label text="Trier par :" />
-                        <Label fx:id="trieUrgence" text="Urgence" GridPane.columnIndex="1" />
-                        <Label fx:id="trieDate" text="Date" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
-                        <Label fx:id="trieLieu" text="Lieu" GridPane.columnIndex="3" GridPane.halignment="LEFT" />
-                        <Label fx:id="trieCat" text="Catégorie" GridPane.columnIndex="4" GridPane.halignment="LEFT" />
+                        <Label fx:id="trieUrgence" onMouseClicked="#orderByUrgence" text="Urgence" GridPane.columnIndex="1" />
+                        <Label fx:id="trieDate" onMouseClicked="#orderByDate" text="Date" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
+                        <Label fx:id="trieLieu" onMouseClicked="#orderByClicked" text="Lieu" GridPane.columnIndex="3" GridPane.halignment="LEFT" />
+                        <Label fx:id="trieCat" onMouseClicked="#orderByCategory" text="Catégorie" GridPane.columnIndex="4" GridPane.halignment="LEFT" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="40.0" />
@@ -72,6 +75,9 @@
             </VBox>
          </center>
       </BorderPane>
-      <ListView fx:id="listeViewIncidents" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="listeViewIncidents" prefHeight="553.0" prefWidth="936.0">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin></ListView>
   </children>
 </VBox>
