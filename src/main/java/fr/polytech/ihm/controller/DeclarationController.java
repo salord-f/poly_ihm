@@ -32,7 +32,8 @@ import java.net.URL;
 
 public class DeclarationController {
 
-    String filePath = "C:\\Users\\Polytech\\Desktop\\test.json";    //A MODIFIER //TODO
+    //String filePath = "C:\\Users\\Polytech\\Desktop\\test.json";    //A MODIFIER //TODO
+    File filePath= new File ("./jsonFile.txt");
 
     private static final Logger log = LoggerFactory.getLogger(MainApp.class);
 
@@ -110,7 +111,7 @@ public class DeclarationController {
 
     void writeJson()
     {
-        File f = new File(filePath);
+        File f = filePath;
         if(f.exists() && !f.isDirectory()) {
             modifyJson();
         }
