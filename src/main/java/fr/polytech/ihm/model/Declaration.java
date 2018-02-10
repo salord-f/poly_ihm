@@ -6,12 +6,13 @@ public class Declaration {
     private String categorie;
     private String titre;
     private String descrpition;
-    private URL image;
+    private String image;
     private String localisation;
     private int urgence;
     private String email;
+    private String emailDomaine;
 
-    private Declaration(String categorie, String titre, String descrpition, URL image, String localisation, int urgence, String email )
+    public Declaration(String categorie, String titre, String descrpition, String image, String localisation, int urgence, String email, String emailDomaine )
     {
         this.categorie = categorie;
         this.titre = titre;
@@ -20,6 +21,7 @@ public class Declaration {
         this.localisation = localisation;
         this.urgence = urgence;
         this.email = email;
+        this.emailDomaine = emailDomaine;
     }
 
     public int getUrgence() {
@@ -46,7 +48,11 @@ public class Declaration {
         return titre;
     }
 
-    public URL getImage() {
+    public String getImage() {
         return image;
+    }
+
+    public String getEmailDomaine() {
+        return emailDomaine;
     }
 }
