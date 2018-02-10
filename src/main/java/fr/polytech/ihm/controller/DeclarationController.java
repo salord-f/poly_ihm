@@ -33,7 +33,7 @@ import java.net.URL;
 public class DeclarationController {
 
     //String filePath = "C:\\Users\\Polytech\\Desktop\\test.json";    //A MODIFIER //TODO
-    File filePath= new File ("./jsonFile.txt");
+    File filePath= new File ("./jsonFile.json");
 
     private static final Logger log = LoggerFactory.getLogger(MainApp.class);
 
