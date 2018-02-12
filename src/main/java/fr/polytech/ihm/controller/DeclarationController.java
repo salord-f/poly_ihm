@@ -143,7 +143,6 @@ public class DeclarationController {
                 !emailConvert.equals("")||
                 !emaileDomaineConvert.equals(""))
         {
-                //TODO
             try {
                 Stage stage = new Stage();
 

@@ -1,6 +1,10 @@
 package fr.polytech.ihm.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -8,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class confirmationAnnulationController {
 
@@ -18,18 +23,15 @@ public class confirmationAnnulationController {
     private Button NoButton;
 
     @FXML
-    private
-
-    @FXML
-    public void YesButton(ActionEvent event) {
+    public void NoButtonAction(ActionEvent event) {
         Stage stage = (Stage) YesButton.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    public void NoButton(ActionEvent event){
+    public void YesButtonAction(ActionEvent event){ //TODO
         try {
-            Stage stage = (Stage) join.getScene().getWindow();
+            Stage stage = (Stage) YesButton.getScene().getWindow();
 
             Parent root = FXMLLoader.load(
                     getClass().getResource("/fxml/viewIncidents.fxml"));
