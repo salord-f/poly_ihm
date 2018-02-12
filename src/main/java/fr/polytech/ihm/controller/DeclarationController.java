@@ -1,11 +1,10 @@
 package fr.polytech.ihm.controller;
 import fr.polytech.ihm.MainApp;
-import fr.polytech.ihm.model.Declaration;
+import fr.polytech.ihm.model.Incident;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
@@ -28,7 +27,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +38,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
 
+
 public class DeclarationController {
 
     //String filePath = "C:\\Users\\Polytech\\Desktop\\test.json";    //A MODIFIER //TODO
@@ -47,7 +46,7 @@ public class DeclarationController {
 
     private static final Logger log = LoggerFactory.getLogger(MainApp.class);
 
-    Declaration declaration;
+    Incident incident;
 
 
     @FXML
@@ -290,7 +289,7 @@ public class DeclarationController {
         emailConvert = email.getText();
         emaileDomaineConvert = emaileDomaine.getValue();
 
-        declaration = new Declaration(categorieConvert,titreConvert,descriptionConvert,joinConvert,localizationConvert,urgenceState,emailConvert,emaileDomaineConvert);
+        incident = new Incident(categorieConvert,titreConvert,descriptionConvert,joinConvert,localizationConvert,urgenceState,emailConvert,emaileDomaineConvert);
     }
 
     @FXML

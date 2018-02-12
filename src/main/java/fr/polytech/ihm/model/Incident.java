@@ -1,59 +1,58 @@
 package fr.polytech.ihm.model;
 
-import javafx.scene.image.Image;
+import java.net.URL;
 
 public class Incident {
-
-
     private String categorie;
     private String titre;
-    private String description;
-    private Image image;
-    private String lieu;
-    private String urgence;
+    private String descrpition;
+    private String image;
+    private String localisation;
+    private int urgence;
     private String email;
+    private String emailDomaine;
 
-    public Incident(String categorie, String titre, String description, Image image, String lieu, String urgence, String email) {
+    public Incident(String categorie, String titre, String descrpition, String image, String localisation, int urgence, String email, String emailDomaine )
+    {
         this.categorie = categorie;
         this.titre = titre;
-        this.description = description;
+        this.descrpition = descrpition;
         this.image = image;
-        this.lieu = lieu;
+        this.localisation = localisation;
         this.urgence = urgence;
         this.email = email;
+        this.emailDomaine = emailDomaine;
     }
 
-    public Incident(String titre, String email) {
-        this.titre = titre;
-        this.email = email;
+    public int getUrgence() {
+        return urgence;
     }
-
 
     public String getCategorie() {
         return categorie;
+    }
+
+    public String getDescrpition() {
+        return descrpition;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLocalisation() {
+        return localisation;
     }
 
     public String getTitre() {
         return titre;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
-    public String getLieu() {
-        return lieu;
-    }
-
-    public String getUrgence() {
-        return urgence;
-    }
-
-    public String getEmail() {
-        return email;
+    public String getEmailDomaine() {
+        return emailDomaine;
     }
 }
