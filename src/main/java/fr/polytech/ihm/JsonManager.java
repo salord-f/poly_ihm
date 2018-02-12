@@ -7,19 +7,21 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JsonManager {
 
-    File filePath= new File ("./jsonFile.json");
+    private File jsonFile;
 
     public JsonManager ()
     {
-
+        jsonFile = new File("./jsonFile.json");
     }
 
     public void writeJson(Incident incident)
     {
-        if(filePath.exists() && !filePath.isDirectory()) {
+        if(jsonFile.exists() && !jsonFile.isDirectory()) {
             modifyJson(incident);
         }
         else
@@ -33,7 +35,7 @@ public class JsonManager {
         JSONParser parser = new JSONParser();
         try {
 
-            Object obj = parser.parse(new FileReader(filePath));
+            Object obj = parser.parse(new FileReader(jsonFile));
 
             JSONObject jsonObject = (JSONObject) obj;
 
@@ -45,7 +47,7 @@ public class JsonManager {
             obj2.put("messages", list);
 
 
-            try (FileWriter file = new FileWriter(filePath)) {
+            try (FileWriter file = new FileWriter(jsonFile)) {
                 file.write(obj2.toJSONString());
                 file.flush();
 
@@ -53,11 +55,7 @@ public class JsonManager {
                 e.printStackTrace();
             }
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
 
@@ -66,17 +64,13 @@ public class JsonManager {
     void createJson(Incident incident)
     {
         JSONArray list = new JSONArray();
-        //JSONArray list2 = new JSONArray();
 
         list.add(getParameters(incident));
-
-        //list.add(list2);
 
         JSONObject obj = new JSONObject();
         obj.put("messages", list);
 
-
-        try (FileWriter file = new FileWriter(filePath)) {
+        try (FileWriter file = new FileWriter(jsonFile)) {
             file.write(obj.toJSONString());
             file.flush();
 
@@ -100,5 +94,28 @@ public class JsonManager {
         list2.add(incident.getDate());
 
         return list2;
+    }
+
+    public List<Incident> getIncidents() {
+
+        JSONParser parser = new JSONParser();
+        List<Incident> incidents = new ArrayList<>();
+
+        try {
+
+            JSONObject jsonObject = (JSONObject)parser.parse(new FileReader(jsonFile));
+
+            JSONArray list = (JSONArray) jsonObject.get("messages");
+
+            list.forEach((Object jsonArrayAsObject) -> {
+                JSONArray jsonArray = (JSONArray)jsonArrayAsObject;
+                incidents.add(new Incident((String)jsonArray.get(0), (String)jsonArray.get(1), (String)jsonArray.get(2), (String)jsonArray.get(3), (String)jsonArray.get(4), (int)jsonArray.get(5), (String)jsonArray.get(6), (String)jsonArray.get(7), (String)jsonArray.get(8)));
+            });
+
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }
+
+        return incidents;
     }
 }
