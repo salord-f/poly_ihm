@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.DeclarationController">
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.DeclarationController">
    <top>
       <Text fx:id="declarationTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Déclaration" textAlignment="CENTER" wrappingWidth="200" BorderPane.alignment="CENTER">
          <font>
@@ -90,7 +90,7 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="join" maxHeight="24.0" maxWidth="150.0" minHeight="24.0" minWidth="150.0" mnemonicParsing="false" onAction="#joinAction" prefHeight="24.0" prefWidth="150.0" text="Joindre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="join" maxHeight="32.0" maxWidth="150.0" minHeight="24.0" minWidth="150.0" mnemonicParsing="false" onAction="#joinAction" prefHeight="32.0" prefWidth="150.0" text="Joindre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
