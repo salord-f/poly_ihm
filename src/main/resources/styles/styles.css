@@ -1,6 +1,7 @@
 /* Application wide styles */
 
 .label {
+    -fx-font-family: 'Open Sans';
     -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
@@ -9,15 +10,44 @@
 
 .button {
     -fx-text-fill: white;
-    -fx-font-family: "Arial Narrow";
+    -fx-padding: 5 3 3 3;
+    -fx-font-family: "Verdana";
     -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-size: 12px;
+    -fx-background-color: #51A1F3;
 }
 
 .button:hover{
-    -fx-base: #395bae;
+    -fx-base: #8FC3F9;
 }
+
+.radio-button .dot:focused{
+    -fx-background-color: #51A1F3;
+}
+
+
+.combo-box{
+    -fx-padding: 0px;
+    -fx-text-fill: white !important;
+}
+
+.combo-box .list-view{
+    -fx-background-color: white;
+}
+
+.combo-box .list-view:hover{
+    -fx-background-color: white;
+}
+
+.combo-box-base{
+    -fx-background-color:#51A1F3;
+    -fx-text-fill: white;
+}
+
+.text-area {
+    -fx-border-radius: 18px !important;
+}
+
 
 /* Component specific styles */
 
