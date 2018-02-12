@@ -18,10 +18,27 @@ public class confirmationAnnulationController {
     private Button NoButton;
 
     @FXML
-    public void initialize() {
+    private
+
+    @FXML
+    public void YesButton(ActionEvent event) {
         Stage stage = (Stage) YesButton.getScene().getWindow();
         stage.close();
-
-
     }
+
+    @FXML
+    public void NoButton(ActionEvent event){
+        try {
+            Stage stage = (Stage) join.getScene().getWindow();
+
+            Parent root = FXMLLoader.load(
+                    getClass().getResource("/fxml/viewIncidents.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("ViewIncident");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
