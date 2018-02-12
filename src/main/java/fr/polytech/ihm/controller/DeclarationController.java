@@ -302,6 +302,10 @@ public class DeclarationController {
 
     public boolean checkInput()
     {
+        if (emaileDomaineConvert == null)
+        {
+            emaileDomaineConvert = ("");
+        }
         if (titreConvert.equals("") || emaileDomaineConvert.equals("") ||  emailConvert.equals(""))
         {
             try {
