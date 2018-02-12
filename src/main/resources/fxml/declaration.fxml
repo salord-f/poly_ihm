@@ -90,7 +90,7 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="join" maxHeight="24.0" maxWidth="150.0" minHeight="24.0" minWidth="150.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="150.0" text="Joindre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="join" maxHeight="24.0" maxWidth="150.0" minHeight="24.0" minWidth="150.0" mnemonicParsing="false" onAction="#joinAction" prefHeight="24.0" prefWidth="150.0" text="Joindre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>

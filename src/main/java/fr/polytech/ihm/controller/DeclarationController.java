@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
@@ -34,6 +35,9 @@ import org.slf4j.LoggerFactory;
 
 import  java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 
 public class DeclarationController {
@@ -143,7 +147,7 @@ public class DeclarationController {
             list2.add(categorieConvert);
             list2.add(titreConvert);
             list2.add(descriptionConvert);
-            list2.add("Emplacement futur URL");//list2.add(joinConvert); //TODO
+            list2.add(joinConvert);
             list2.add(localizationConvert);
             list2.add(localizationDetailConvert);
             list2.add(urgenceState);
@@ -184,7 +188,7 @@ public class DeclarationController {
         list2.add(categorieConvert);
         list2.add(titreConvert);
         list2.add(descriptionConvert);
-        list2.add("Emplacement futur URL");//list2.add(joinConvert); //TODO
+        list2.add(joinConvert); //TODO
         list2.add(localizationConvert);
         list2.add(localizationDetailConvert);
         list2.add(urgenceState);
@@ -204,6 +208,25 @@ public class DeclarationController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void joinAction(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File URL = fileChooser.showOpenDialog(join.getScene().getWindow());
+
+        String file = "./";
+
+        Path currentDirectory = new File(file + URL.getName()).toPath();
+
+        try {
+            Files.copy(URL.toPath(),currentDirectory, StandardCopyOption.REPLACE_EXISTING);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        joinConvert = currentDirectory.toString();
     }
 
     @FXML
@@ -344,5 +367,4 @@ public class DeclarationController {
             return true;
         }
     }
-
 }
