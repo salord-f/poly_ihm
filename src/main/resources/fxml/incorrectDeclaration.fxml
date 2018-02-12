@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox fx:id="Fenetre" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="Fenetre" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.IncorrectDeclarationController">
    <children>
       <Label fx:id="Texte" text="Tous les champs obligatoires n'ont pas été remplis" />
       <Button fx:id="okButton" mnemonicParsing="false" onAction="#okAction" text="ok" />
