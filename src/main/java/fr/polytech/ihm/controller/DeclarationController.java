@@ -4,6 +4,12 @@ import fr.polytech.ihm.model.Declaration;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -112,6 +118,7 @@ public class DeclarationController {
     void writeJson()
     {
         File f = filePath;
+
         if(f.exists() && !f.isDirectory()) {
             modifyJson();
         }
@@ -199,16 +206,34 @@ public class DeclarationController {
         }
     }
 
+    @FXML
+    void RetourAction(ActionEvent event) {
+        try {
+            Stage stage = (Stage) join.getScene().getWindow();
+
+            Parent root = FXMLLoader.load(
+                    getClass().getResource("/fxml/viewIncidents.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("ViewIncident");
+            stage.show();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void envoyerAction(ActionEvent event) {
 
         //if(checkInput())
-        {
-            retrieveData();
-        }
 
-        writeJson();
+        retrieveData();
+
+        if (checkInput())
+        {
+            writeJson();
+        }
     }
 
     private void retrieveData()
@@ -274,4 +299,46 @@ public class DeclarationController {
         emaileDomaine.setItems(emaileDomaineList);
 
     }
+
+    public boolean checkInput()
+    {
+        if (titreConvert.equals("") || emaileDomaineConvert.equals("") ||  emailConvert.equals(""))
+        {
+            try {
+                Stage stage = new Stage();
+
+                Stage stage2 = (Stage) join.getScene().getWindow();
+
+                Parent root = FXMLLoader.load(
+                        getClass().getResource("/fxml/incorrectDeclaration.fxml"));
+                stage.setScene(new Scene(root));
+                stage.setTitle("Error");
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(stage2);
+                stage.show();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            /*try {
+                String fxmlFile = "/fxml/incorrectDeclaration.fxml";
+                FXMLLoader loader = new FXMLLoader();
+
+                Stage stage = (Stage) join.getScene().getWindow();
+                Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
+                Scene scene = new Scene(rootNode);
+                stage.setTitle("MARMOUD");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            return false;}
+        else
+        {
+            return true;
+        }
+    }
+
 }

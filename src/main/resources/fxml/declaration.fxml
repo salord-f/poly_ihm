@@ -188,7 +188,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="retour" alignment="TOP_CENTER" maxHeight="35.0" maxWidth="95.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="95.0" text="Retour">
+                        <Button fx:id="retour" alignment="TOP_CENTER" maxHeight="35.0" maxWidth="95.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" onAction="#RetourAction" prefHeight="35.0" prefWidth="95.0" text="Retour">
                            <font>
                               <Font size="18.0" />
                            </font>
