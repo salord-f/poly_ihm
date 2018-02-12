@@ -42,6 +42,9 @@ public class IncidentController {
     private Label Description;
 
     @FXML
+    private Label DetailLieu;
+
+    @FXML
     private Label descriptionIncident;
 
     @FXML

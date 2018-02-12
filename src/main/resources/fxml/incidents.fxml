@@ -39,6 +39,7 @@
       <HBox fx:id="infoSupp" alignment="CENTER_LEFT" spacing="100.0">
          <children>
             <Label fx:id="Description" prefHeight="34.0" text="Description Incident" />
+            <Label fx:id="DetailLieu" prefHeight="34.0" text="Detail Lieu"/>
             <ImageView fx:id="imageIncident" fitHeight="33.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true" />
          </children>
          <VBox.margin>
