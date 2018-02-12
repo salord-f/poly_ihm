@@ -19,6 +19,9 @@ public class confirmationAnnulationController {
 
     @FXML
     public void initialize() {
+        Stage stage = (Stage) YesButton.getScene().getWindow();
+        stage.close();
+
 
     }
 }
