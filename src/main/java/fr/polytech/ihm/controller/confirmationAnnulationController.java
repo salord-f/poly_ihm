@@ -9,7 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class IncidentController {
+public class confirmationAnnulationController {
 
     @FXML
     private Button YesButton;

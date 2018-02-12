@@ -52,7 +52,7 @@ public class DeclarationController {
     private Text categorieLabel;
 
 
-    private String categorieConvert;
+    private String categorieConvert = "";
     @FXML
     private ComboBox<String> categorie;
 
@@ -60,26 +60,26 @@ public class DeclarationController {
     private Text titreLabel;
 
 
-    private String titreConvert;
+    private String titreConvert = "";
     @FXML
     private TextField titre;
 
 
-    private String descriptionConvert;
+    private String descriptionConvert = "";
     @FXML
     private TextArea description;
 
 
-    private String joinConvert; //URL
+    private String joinConvert = ""; //URL
     @FXML
     private Button join;
 
-    private String localizationConvert;
+    private String localizationConvert = "";
     @FXML
     private ComboBox<String> localization;
 
 
-    private String localizationDetailConvert;
+    private String localizationDetailConvert = "";
     @FXML
     private TextField localizationDetail;
 
@@ -98,7 +98,7 @@ public class DeclarationController {
     private RadioButton urgenceForte;
 
 
-    private String emailConvert;
+    private String emailConvert = "";
     @FXML
     private TextField email;
 
@@ -134,18 +134,46 @@ public class DeclarationController {
 
     @FXML
     void RetourAction(ActionEvent event) {
-        try {
-            Stage stage = (Stage) join.getScene().getWindow();
-
-            Parent root = FXMLLoader.load(
-                    getClass().getResource("/fxml/viewIncidents.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("ViewIncident");
-            stage.show();
-        }
-        catch (Exception e)
+        retrieveData();
+        if (    !categorieConvert.equals("")||
+                !titreConvert.equals("")||
+                !descriptionConvert.equals("")||
+                !joinConvert.equals("")||
+                !localizationConvert.equals("")||
+                !emailConvert.equals("")||
+                !emaileDomaineConvert.equals(""))
         {
-            e.printStackTrace();
+                //TODO
+            try {
+                Stage stage = new Stage();
+
+                Stage stage2 = (Stage) join.getScene().getWindow();
+
+                Parent root = FXMLLoader.load(
+                        getClass().getResource("/fxml/confirmationAnnulation.fxml")); //TODO
+                stage.setScene(new Scene(root));
+                stage.setTitle("Error");
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(stage2);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        else
+        {
+            try {
+                Stage stage = (Stage) join.getScene().getWindow();
+
+                Parent root = FXMLLoader.load(
+                        getClass().getResource("/fxml/viewIncidents.fxml"));
+                stage.setScene(new Scene(root));
+                stage.setTitle("ViewIncident");
+                stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -158,6 +186,21 @@ public class DeclarationController {
         {
             JsonManager jsonManager = new JsonManager();
             jsonManager.writeJson(incident);
+            try {
+                Stage stage = (Stage) join.getScene().getWindow();
+
+
+                Parent root = FXMLLoader.load(
+                        getClass().getResource("/fxml/popupConfirmation.fxml"));
+                stage.setScene(new Scene(root));
+                stage.setTitle("confirmation");
+
+                stage.show();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
         else {
             try {
@@ -166,7 +209,7 @@ public class DeclarationController {
                 Stage stage2 = (Stage) join.getScene().getWindow();
 
                 Parent root = FXMLLoader.load(
-                        getClass().getResource("/fxml/incorrectDeclaration.fxml"));
+                        getClass().getResource("/fxml/incorrectDeclaration.fxml")); //TODO
                 stage.setScene(new Scene(root));
                 stage.setTitle("Error");
                 stage.initModality(Modality.WINDOW_MODAL);

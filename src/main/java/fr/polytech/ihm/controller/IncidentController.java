@@ -66,6 +66,5 @@ public class IncidentController {
             infoSupp.setManaged(!infoSupp.isManaged());
             infoSupp.setVisible(!infoSupp.isVisible());
         });
-
     }
 }
