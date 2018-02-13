@@ -33,6 +33,9 @@ public class confirmationAnnulationController {
         try {
             Stage stage = (Stage) YesButton.getScene().getWindow();
 
+            Stage stage2 = (Stage) stage.getOwner();
+            stage2.close();
+            
             Parent root = FXMLLoader.load(
                     getClass().getResource("/fxml/viewIncidents.fxml"));
             stage.setScene(new Scene(root));
