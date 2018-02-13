@@ -16,7 +16,7 @@ public class IncidentController {
     private Label date;
 
     @FXML
-    private Label voiture;
+    private Label categorie;
 
     @FXML
     private ImageView urgenceIcon;
@@ -51,11 +51,43 @@ public class IncidentController {
     @FXML
     public void initialize(Incident incident) {
         //urgenceIcon.setImage(orange);
+
+        fill(incident);
         infoSupp.setManaged(!infoSupp.isManaged());
         infoSupp.setVisible(!infoSupp.isVisible());
         voirDescription.setOnAction(event -> {
             infoSupp.setManaged(!infoSupp.isManaged());
             infoSupp.setVisible(!infoSupp.isVisible());
         });
+    }
+
+    private void fill(Incident incident) {
+        this.date.setText(incident.getDate());
+
+        String categorie = incident.getCategorie();
+        if (categorie.equals("")) {
+            this.categorie.setText("No category");
+        } else this.categorie.setText(categorie);
+
+        this.titreIncident.setText(incident.getTitre());
+
+        String description = incident.getDescription();
+        if (description.equals("")) {
+            this.description.setText("No description");
+        } else this.description.setText(description);
+
+        this.detailLieu.setText(incident.getLocalisation());
+        String detailLieu = incident.getLocalisation();
+        if (detailLieu.equals("")) {
+            this.detailLieu.setText("No detail");
+        } else this.detailLieu.setText(detailLieu);
+
+        this.email.setText(incident.getEmail() + incident.getEmailDomaine());
+
+        String image = incident.getImage();
+        if (!image.equals("")) {
+            this.imageIncident = new ImageView(image);
+        }
+
     }
 }

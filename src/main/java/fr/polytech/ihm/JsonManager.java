@@ -84,7 +84,7 @@ public class JsonManager {
         JSONArray list2 = new JSONArray();
         list2.add(incident.getCategorie());
         list2.add(incident.getTitre());
-        list2.add(incident.getDescrpition());
+        list2.add(incident.getDescription());
         list2.add(incident.getImage());
         list2.add(incident.getLocalisation());
         //list2.add(incident.getlocalizationDetailConvert);
@@ -109,7 +109,7 @@ public class JsonManager {
 
             list.forEach((Object jsonArrayAsObject) -> {
                 JSONArray jsonArray = (JSONArray)jsonArrayAsObject;
-                incidents.add(new Incident((String)jsonArray.get(0), (String)jsonArray.get(1), (String)jsonArray.get(2), (String)jsonArray.get(3), (String)jsonArray.get(4), (int)jsonArray.get(5), (String)jsonArray.get(6), (String)jsonArray.get(7), (String)jsonArray.get(8)));
+                incidents.add(new Incident((String)jsonArray.get(0), (String)jsonArray.get(1), (String)jsonArray.get(2), (String)jsonArray.get(3), (String)jsonArray.get(4), Integer.parseInt(jsonArray.get(5).toString()), (String)jsonArray.get(6), (String)jsonArray.get(7), (String)jsonArray.get(8)));
             });
 
         } catch (ParseException | IOException e) {

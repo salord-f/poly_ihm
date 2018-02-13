@@ -11,7 +11,7 @@ public class ViewIncident {
     private String trieCat;
     private List<Incident> incidentList = new ArrayList<>();
 
-    public ViewIncident(){
+    public ViewIncident() {
 
     }
 

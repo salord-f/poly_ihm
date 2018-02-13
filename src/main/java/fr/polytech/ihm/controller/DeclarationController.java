@@ -266,7 +266,7 @@ public class DeclarationController {
             emaileDomaineConvert = "";
         }
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm yyyy/MM/dd");
         Calendar cal = Calendar.getInstance();
 
         cal.add(Calendar.DATE, 1);
