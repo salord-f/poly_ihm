@@ -1,24 +1,16 @@
 package fr.polytech.ihm.controller;
 
+import fr.polytech.ihm.model.Incident;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 public class IncidentController {
 
     @FXML
-    private VBox incident;
-
-    @FXML
     private GridPane infoGlobals;
-
-    @FXML
-    private HBox infoSupp;
 
     @FXML
     private Label date;
@@ -39,13 +31,13 @@ public class IncidentController {
     private Button voirDescription;
 
     @FXML
-    private Label Description;
+    private GridPane infoSupp;
 
     @FXML
-    private Label DetailLieu;
+    private Label description;
 
     @FXML
-    private Label descriptionIncident;
+    private Label detailLieu;
 
     @FXML
     private ImageView imageIncident;
@@ -56,12 +48,11 @@ public class IncidentController {
     @FXML
     private Label email;
 
-    private Image orange = new Image("file:./src/main/resources/images/orange.png");
-
     @FXML
-    public void initialize() {
-        urgenceIcon.setImage(orange);
-
+    public void initialize(Incident incident) {
+        //urgenceIcon.setImage(orange);
+        infoSupp.setManaged(!infoSupp.isManaged());
+        infoSupp.setVisible(!infoSupp.isVisible());
         voirDescription.setOnAction(event -> {
             infoSupp.setManaged(!infoSupp.isManaged());
             infoSupp.setVisible(!infoSupp.isVisible());
