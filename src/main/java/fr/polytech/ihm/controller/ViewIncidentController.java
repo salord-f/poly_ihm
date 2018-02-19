@@ -4,7 +4,6 @@ import fr.polytech.ihm.JsonManager;
 import fr.polytech.ihm.model.Incident;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -150,7 +149,7 @@ public class ViewIncidentController {
 						incidentList.sort(comparatorIncident_byDate);
 						orderedByDate = false;
 					} else {
-						incidentList.sort(comparatorIncident_byCat);
+						incidentList.sort(comparatorIncident_byDate);
 						Collections.reverse(incidentList);
 						orderedByDate = true;
 					}
@@ -162,7 +161,7 @@ public class ViewIncidentController {
 						incidentList.sort(comparatorIncident_byLieu);
 						orderedByLieu = false;
 					} else {
-						incidentList.sort(comparatorIncident_byCat);
+						incidentList.sort(comparatorIncident_byLieu);
 						Collections.reverse(incidentList);
 						orderedByLieu = true;
 					}
@@ -174,7 +173,7 @@ public class ViewIncidentController {
 						incidentList.sort(comparatorIncident_byUrgence);
 						orderedByUrgence = false;
 					} else {
-						incidentList.sort(comparatorIncident_byCat);
+						incidentList.sort(comparatorIncident_byUrgence);
 						Collections.reverse(incidentList);
 						orderedByUrgence = true;
 					}
