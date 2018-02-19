@@ -20,88 +20,117 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class ViewIncidentController {
-    private ObservableList<Incident> incidentList = FXCollections.observableArrayList();
+	private ObservableList<Incident> incidentList = FXCollections.observableArrayList();
+	private boolean orderedByCat;
+	private boolean orderedByLieu;
+	private boolean orderedByDate;
+	private boolean orderedByUrgence;
 
-    @FXML
-    private TextField rechercherIncident;
+	@FXML
+	private TextField rechercherIncident;
 
-    @FXML
-    private Button declarerIncident;
+	@FXML
+	private Button declarerIncident;
 
-    @FXML
-    private GridPane trierPar;
+	@FXML
+	private GridPane trierPar;
 
-    @FXML
-    private Button trieUrgence;
+	@FXML
+	private Button trieUrgence;
 
-    @FXML
-    private Button trieDate;
+	@FXML
+	private Button trieDate;
 
-    @FXML
-    private Button trieLieu;
+	@FXML
+	private Button trieLieu;
 
-    @FXML
-    private Button trieCat;
+	@FXML
+	private Button trieCat;
 
-    @FXML
-    private ListView<Incident> listeViewIncidents;
-    private Comparator<Incident> comparatorIncident_byCat = (inc1, inc2) -> inc1.getCategorie().compareToIgnoreCase(inc2.getCategorie());
-    private Comparator<Incident> comparatorIncident_byLieu = (inc1, inc2) -> inc1.getLocalisation().compareToIgnoreCase(inc2.getLocalisation());
-    private Comparator<Incident> comparatorIncident_byDate = (inc1, inc2) -> inc1.getLocalisation().compareToIgnoreCase(inc2.getLocalisation());
-    private Comparator<Incident> comparatorIncident_byUrgence = (inc1, inc2) -> inc1.getLocalisation().compareToIgnoreCase(inc2.getLocalisation());
+	@FXML
+	private ListView<Incident> listeViewIncidents;
+	private Comparator<Incident> comparatorIncident_byCat = (inc1, inc2) -> inc1.getCategorie().compareToIgnoreCase(inc2.getCategorie());
+	private Comparator<Incident> comparatorIncident_byLieu = (inc1, inc2) -> inc1.getLocalisation().compareToIgnoreCase(inc2.getLocalisation());
+	private Comparator<Incident> comparatorIncident_byDate = (inc1, inc2) -> inc1.getDate().compareToIgnoreCase(inc2.getDate());
+	private Comparator<Incident> comparatorIncident_byUrgence = Comparator.comparingInt(Incident::getUrgence);
 
-    @FXML
-    void openNewDeclaration(MouseEvent event) {
-        try {
-            Stage stage = (Stage) declarerIncident.getScene().getWindow();
+	@FXML
+	void openNewDeclaration(MouseEvent event) {
+		try {
+			Stage stage = (Stage) declarerIncident.getScene().getWindow();
 
-            Parent root = FXMLLoader.load(
-                    getClass().getResource("/fxml/declaration.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Déclaration");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+			Parent root = FXMLLoader.load(
+					getClass().getResource("/fxml/declaration.fxml"));
+			stage.setScene(new Scene(root));
+			stage.setTitle("Déclaration");
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-    @FXML
-    void orderByCat(MouseEvent event) {
-        if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            incidentList.sort(comparatorIncident_byCat);
-        }
-    }
+	@FXML
+	void orderByCat(MouseEvent event) {
+		if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+			if (orderedByCat) {
+				incidentList.sort(comparatorIncident_byCat);
+				orderedByCat = true;
+			} else {
+				Collections.reverse(incidentList);
+				orderedByCat = false;
+			}
+		}
+	}
 
-    @FXML
-    void orderByLieu(MouseEvent event) {
-        if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            incidentList.sort(comparatorIncident_byLieu);
-        }
-    }
+	@FXML
+	void orderByLieu(MouseEvent event) {
+		if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+			if (orderedByLieu) {
+				incidentList.sort(comparatorIncident_byLieu);
+				orderedByLieu = true;
+			} else {
+				Collections.reverse(incidentList);
+				orderedByLieu = false;
+			}
+		}
+	}
 
-    @FXML
-    void orderByDate(MouseEvent event) {
-        if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            incidentList.sort(comparatorIncident_byDate);
-        }
-    }
+	@FXML
+	void orderByDate(MouseEvent event) {
+		if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+			if (orderedByDate) {
+				incidentList.sort(comparatorIncident_byDate);
+				orderedByDate = true;
+			} else {
+				Collections.reverse(incidentList);
+				orderedByDate = false;
+			}
+		}
+	}
 
-    @FXML
-    void orderByUrgence(MouseEvent event) {
-        if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            incidentList.sort(comparatorIncident_byUrgence);
-        }
-    }
+	@FXML
+	void orderByUrgence(MouseEvent event) {
+		if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+			if (orderedByUrgence) {
+				incidentList.sort(comparatorIncident_byUrgence);
+				orderedByUrgence = true;
+			} else {
+				Collections.reverse(incidentList);
+				orderedByUrgence = false;
+			}
+		}
+	}
 
-    @FXML
-    void search(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            //TODO order
-            rechercherIncident.setText("");
-        }
+	@FXML
+	void search(KeyEvent event) {
+		if (event.getCode() == KeyCode.ENTER) {
+			//TODO order
+			rechercherIncident.setText("");
+		}
         /*}
         rechercherIncident.setOnKeyPressed(() -> {
             public void handle(KeyEvent event) {
@@ -115,40 +144,43 @@ public class ViewIncidentController {
                 }
             }
         });*/
+	}
 
+	@FXML
+	public void initialize() {
+		this.orderedByCat = false;
+		this.orderedByDate = false;
+		this.orderedByLieu = false;
+		this.orderedByUrgence = false;
 
-    }
+		incidentList.addAll(new JsonManager().getIncidents());
+		listeViewIncidents.setItems(incidentList);
 
-    @FXML
-    public void initialize() {
-        incidentList.addAll(new JsonManager().getIncidents());
-        listeViewIncidents.setItems(incidentList);
-
-        this.listeViewIncidents.setCellFactory(
-                new Callback<ListView<Incident>, ListCell<Incident>>() {
-                    @Override
-                    public ListCell<Incident> call(ListView<Incident> listView) {
-                        return new ListCell<Incident>() {
-                            @Override
-                            protected void updateItem(Incident item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (item != null) {
-                                    // Load fxml file for this internship
-                                    try {
-                                        String fxmlFile = "/fxml/incidents.fxml";
-                                        FXMLLoader loader = new FXMLLoader();
-                                        Parent listElement = loader.load(getClass().getResourceAsStream(fxmlFile));
-                                        ((IncidentController) loader.getController()).initialize(item);
-                                        // Display content of the fxml file
-                                        this.setGraphic(listElement);
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }
-                        };
-                    }
-                });
-    }
+		this.listeViewIncidents.setCellFactory(
+				new Callback<ListView<Incident>, ListCell<Incident>>() {
+					@Override
+					public ListCell<Incident> call(ListView<Incident> listView) {
+						return new ListCell<Incident>() {
+							@Override
+							protected void updateItem(Incident item, boolean empty) {
+								super.updateItem(item, empty);
+								if (item != null) {
+									// Load fxml file for this internship
+									try {
+										String fxmlFile = "/fxml/incidents.fxml";
+										FXMLLoader loader = new FXMLLoader();
+										Parent listElement = loader.load(getClass().getResourceAsStream(fxmlFile));
+										((IncidentController) loader.getController()).initialize(item);
+										// Display content of the fxml file
+										this.setGraphic(listElement);
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
+								}
+							}
+						};
+					}
+				});
+	}
 
 }
