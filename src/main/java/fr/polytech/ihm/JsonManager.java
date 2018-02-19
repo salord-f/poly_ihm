@@ -72,13 +72,13 @@ public class JsonManager {
     private JSONObject getParameters(Incident incident)
     {
         JSONObject obj = new JSONObject();
-        obj.put("Category",incident.getCategory());
+        obj.put("Category",incident.getCategory().getName());
         obj.put("Title",incident.getTitle());
         obj.put("Description",incident.getDescription());
         obj.put("Image",incident.getImage());
-        obj.put("Location",incident.getLocation());
+        obj.put("Location",incident.getLocation().getName());
         obj.put("LocationDetail",incident.getLocationDetail());
-        obj.put("Emergency",incident.getEmergency());
+        obj.put("Emergency",incident.getEmergency().ordinal());
         obj.put("Email",incident.getEmail());
         obj.put("EmailDomain",incident.getEmailDomain());
         obj.put("Date",incident.getDate());

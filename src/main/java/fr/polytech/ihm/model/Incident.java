@@ -13,11 +13,11 @@ public class Incident {
     private String date;
 
     public Incident(String category, String title, String description, String image, String location, String locationDetail, int emergency, String email, String emailDomain, String date) {
-        this.category = Category.valueOf(category);
+        this.category = Category.find(category);
         this.title = title;
         this.description = description;
         this.image = image;
-        this.location = Location.valueOf(location);
+        this.location = Location.find(location);
         this.locationDetail = locationDetail;
         this.emergency = Emergency.values()[emergency];
         this.email = email;

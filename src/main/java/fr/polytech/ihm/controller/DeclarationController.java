@@ -1,32 +1,27 @@
 package fr.polytech.ihm.controller;
+
 import fr.polytech.ihm.JsonManager;
 import fr.polytech.ihm.MainApp;
+import fr.polytech.ihm.model.Category;
 import fr.polytech.ihm.model.Incident;
+import fr.polytech.ihm.model.Location;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-
-import java.io.IOException;
-
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import  java.io.File;
-
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -284,22 +279,12 @@ public class DeclarationController {
     @FXML
     public void initialize()
     {
-        ObservableList<String> categorieList =
-            FXCollections.observableArrayList(
-                    "Incident",
-                    "Requête",
-                    "J'ai pas d'idées",
-                    "Autre"
-            );
+        ObservableList<String> categorieList = FXCollections.observableArrayList();
+        for (int i = 0; i < Category.values().length; i++) categorieList.add(Category.values()[i].getName());
         categorie.setItems(categorieList);
 
-        ObservableList<String> localizationList =
-                FXCollections.observableArrayList(
-                        "Salon",
-                        "Cuisine",
-                        "Salle de bain",
-                        "Autre"
-                );
+        ObservableList<String> localizationList = FXCollections.observableArrayList();
+        for (int i = 0; i < Location.values().length; i++) localizationList.add(Location.values()[i].getName());
         localization.setItems(localizationList);
 
         ObservableList<String> emaileDomaineList =
