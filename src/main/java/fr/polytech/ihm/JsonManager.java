@@ -83,7 +83,7 @@ public class JsonManager {
     {
         JSONArray list2 = new JSONArray();
         list2.add(incident.getCategory());
-        list2.add(incident.getTitre());
+        list2.add(incident.getTitle());
         list2.add(incident.getDescription());
         list2.add(incident.getImage());
         list2.add(incident.getLocation());
