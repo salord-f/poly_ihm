@@ -1,35 +1,35 @@
 package fr.polytech.ihm.model;
 
 public class Incident {
-    private String category;
+    private Category category;
     private String title;
     private String description;
     private String image;
-    private String location;
+    private Location location;
     private String locationDetail;
-    private int emergency;
+    private Emergency emergency;
     private String email;
     private String emailDomain;
     private String date;
 
     public Incident(String category, String title, String description, String image, String location, String locationDetail, int emergency, String email, String emailDomain, String date) {
-        this.category = category;
+        this.category = Category.valueOf(category);
         this.title = title;
         this.description = description;
         this.image = image;
-        this.location = location;
+        this.location = Location.valueOf(location);
         this.locationDetail = locationDetail;
-        this.emergency = emergency;
+        this.emergency = Emergency.values()[emergency];
         this.email = email;
         this.emailDomain = emailDomain;
         this.date = date;
     }
 
-    public int getEmergency() {
+    public Emergency getEmergency() {
         return emergency;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
@@ -41,7 +41,7 @@ public class Incident {
         return email;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
