@@ -210,7 +210,7 @@ public class DeclarationController {
                 Parent root = FXMLLoader.load(
                         getClass().getResource("/fxml/incorrectDeclaration.fxml")); //TODO
                 stage.setScene(new Scene(root));
-                stage.setTitle("Erreur de ");
+                stage.setTitle("Erreur de remplissage");
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.initOwner(stage2);
                 stage.show();

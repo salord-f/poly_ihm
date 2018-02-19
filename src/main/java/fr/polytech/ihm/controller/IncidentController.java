@@ -67,20 +67,20 @@ public class IncidentController {
 
 		String category = incident.getCategory().getName();
 		if (category.equals("")) {
-			this.categorie.setText("No category");
+			this.categorie.setText("Pas de catégorie");
 		} else this.categorie.setText(category);
 
 		this.titreIncident.setText(incident.getTitle());
 
 		String description = incident.getDescription();
 		if (description.equals("")) {
-			this.description.setText("No description");
+			this.description.setText("Pas de description");
 		} else this.description.setText(description);
 
 		this.detailLieu.setText(incident.getLocation().getName());
 		String detailLieu = incident.getLocation().getName();
 		if (detailLieu.equals("")) {
-			this.detailLieu.setText("No detail");
+			this.detailLieu.setText("Pas de details");
 		} else this.detailLieu.setText(detailLieu);
 
 		this.email.setText(incident.getEmail() + incident.getEmailDomain());
