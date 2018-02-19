@@ -111,7 +111,7 @@ public class IncidentController {
 			view.setImage(image);
 			view.setCache(true);
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println(e.getMessage());
 		}
 	}
 }

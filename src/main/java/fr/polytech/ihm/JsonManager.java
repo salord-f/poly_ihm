@@ -37,18 +37,12 @@ public class JsonManager {
 
             Object obj = parser.parse(new FileReader(jsonFile));
 
-            JSONObject jsonObject = (JSONObject) obj;
-
-            JSONArray list = (JSONArray) jsonObject.get("messages");
+            JSONArray list = (JSONArray) obj;
 
             list.add(getParameters(incident));
 
-            JSONObject obj2 = new JSONObject();
-            obj2.put("messages", list);
-
-
             try (FileWriter file = new FileWriter(jsonFile)) {
-                file.write(obj2.toJSONString());
+                file.write(list.toJSONString());
                 file.flush();
 
             } catch (IOException e) {
@@ -64,14 +58,10 @@ public class JsonManager {
     void createJson(Incident incident)
     {
         JSONArray list = new JSONArray();
-
         list.add(getParameters(incident));
 
-        JSONObject obj = new JSONObject();
-        obj.put("messages", list);
-
         try (FileWriter file = new FileWriter(jsonFile)) {
-            file.write(obj.toJSONString());
+            file.write(list.toJSONString());
             file.flush();
 
         } catch (IOException e) {
@@ -79,21 +69,21 @@ public class JsonManager {
         }
     }
 
-    private JSONArray getParameters(Incident incident)
+    private JSONObject getParameters(Incident incident)
     {
-        JSONArray list2 = new JSONArray();
-        list2.add(incident.getCategory());
-        list2.add(incident.getTitle());
-        list2.add(incident.getDescription());
-        list2.add(incident.getImage());
-        list2.add(incident.getLocation());
-        list2.add(incident.getLocationDetail());
-        list2.add(incident.getEmergency());
-        list2.add(incident.getEmail());
-        list2.add(incident.getEmailDomain());
-        list2.add(incident.getDate());
+        JSONObject obj = new JSONObject();
+        obj.put("Category",incident.getCategory());
+        obj.put("Title",incident.getTitle());
+        obj.put("Description",incident.getDescription());
+        obj.put("Image",incident.getImage());
+        obj.put("Location",incident.getLocation());
+        obj.put("LocationDetail",incident.getLocationDetail());
+        obj.put("Emergency",incident.getEmergency());
+        obj.put("Email",incident.getEmail());
+        obj.put("EmailDomain",incident.getEmailDomain());
+        obj.put("Date",incident.getDate());
 
-        return list2;
+        return obj;
     }
 
     public List<Incident> getIncidents() {
@@ -103,13 +93,20 @@ public class JsonManager {
 
         try {
 
-            JSONObject jsonObject = (JSONObject)parser.parse(new FileReader(jsonFile));
+            JSONArray list= (JSONArray) parser.parse(new FileReader(jsonFile));
 
-            JSONArray list = (JSONArray) jsonObject.get("messages");
-
-            list.forEach((Object jsonArrayAsObject) -> {
-                JSONArray jsonArray = (JSONArray)jsonArrayAsObject;
-                incidents.add(new Incident((String)jsonArray.get(0), (String)jsonArray.get(1), (String)jsonArray.get(2), (String)jsonArray.get(3), (String)jsonArray.get(4),(String)jsonArray.get(5), Integer.parseInt(jsonArray.get(6).toString()), (String)jsonArray.get(7), (String)jsonArray.get(8), (String)jsonArray.get(9)));
+            list.forEach((Object obj) -> {
+                JSONObject jsonObject=(JSONObject) obj;
+                incidents.add(new Incident((String)jsonObject.get("Category"),
+                        (String)jsonObject.get("Title"),
+                        (String)jsonObject.get("Description"),
+                        (String)jsonObject.get("Image"),
+                        (String)jsonObject.get("Location"),
+                        (String)jsonObject.get("LocationDetail"),
+                        Integer.parseInt(jsonObject.get("Emergency").toString()),
+                        (String)jsonObject.get("Email"),
+                        (String)jsonObject.get("EmailDomain"),
+                        (String)jsonObject.get("Date")));
             });
 
         } catch (ParseException | IOException e) {
@@ -118,4 +115,11 @@ public class JsonManager {
 
         return incidents;
     }
+
+    public static void main(String[] args){
+        JsonManager aaa=new JsonManager();
+        Incident incident=new Incident("A","B","C","D","E","F",1,"G","J","K");
+        aaa.writeJson(incident);
+    }
+
 }
