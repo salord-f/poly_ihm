@@ -186,7 +186,9 @@ public class DeclarationController {
             JsonManager jsonManager = new JsonManager();
             jsonManager.writeJson(incident);
             try {
-                Stage stage = (Stage) join.getScene().getWindow();
+                Stage stage2 = (Stage) join.getScene().getWindow();
+
+                Stage stage = new Stage();
 
 
                 Parent root = FXMLLoader.load(
@@ -194,6 +196,8 @@ public class DeclarationController {
                 stage.setScene(new Scene(root));
                 stage.setTitle("confirmation");
 
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(stage2);
                 stage.show();
             }
             catch (Exception e)
