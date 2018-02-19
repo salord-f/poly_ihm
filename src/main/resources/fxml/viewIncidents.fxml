@@ -62,10 +62,10 @@
                      </rowConstraints>
                      <children>
                         <Label text="Trier par :" />
-                        <Button fx:id="trieUrgence" mnemonicParsing="false" onMouseClicked="#orderByUrgence" text="Urgence" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="trieDate" mnemonicParsing="false" onMouseClicked="#orderByDate" text="Date" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="trieLieu" mnemonicParsing="false" onMouseClicked="#orderByLieu" text="Lieu" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="trieCat" mnemonicParsing="false" onMouseClicked="#orderByCat" text="Catégorie" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button fx:id="trieUrgence" mnemonicParsing="false" text="Urgence" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button fx:id="trieDate" mnemonicParsing="false" text="Date" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button fx:id="trieLieu" mnemonicParsing="false" text="Lieu" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button fx:id="trieCat" mnemonicParsing="false" text="Catégorie" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" />

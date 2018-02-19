@@ -4,6 +4,7 @@ import fr.polytech.ihm.JsonManager;
 import fr.polytech.ihm.model.Incident;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,10 +54,10 @@ public class ViewIncidentController {
 
 	@FXML
 	private ListView<Incident> listeViewIncidents;
-	private Comparator<Incident> comparatorIncident_byCat = (inc1, inc2) -> inc1.getCategory().compareToIgnoreCase(inc2.getCategory());
-	private Comparator<Incident> comparatorIncident_byLieu = (inc1, inc2) -> inc1.getLocation().compareToIgnoreCase(inc2.getLocation());
-	private Comparator<Incident> comparatorIncident_byDate = (inc1, inc2) -> inc1.getDate().compareToIgnoreCase(inc2.getDate());
-	private Comparator<Incident> comparatorIncident_byUrgence = Comparator.comparingInt(Incident::getEmergency);
+	private Comparator<Incident> comparatorIncident_byCat = Comparator.comparing(Incident::getCategorie);
+	private Comparator<Incident> comparatorIncident_byLieu = Comparator.comparing(Incident::getLocalisation);
+	private Comparator<Incident> comparatorIncident_byDate = Comparator.comparing(Incident::getDate);
+	private Comparator<Incident> comparatorIncident_byUrgence = Comparator.comparingInt(Incident::getUrgence);
 
 	@FXML
 	void openNewDeclaration(MouseEvent event) {
@@ -70,58 +71,6 @@ public class ViewIncidentController {
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
-
-	@FXML
-	void orderByCat(MouseEvent event) {
-		if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-			if (orderedByCat) {
-				incidentList.sort(comparatorIncident_byCat);
-				orderedByCat = true;
-			} else {
-				Collections.reverse(incidentList);
-				orderedByCat = false;
-			}
-		}
-	}
-
-	@FXML
-	void orderByLieu(MouseEvent event) {
-		if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-			if (orderedByLieu) {
-				incidentList.sort(comparatorIncident_byLieu);
-				orderedByLieu = true;
-			} else {
-				Collections.reverse(incidentList);
-				orderedByLieu = false;
-			}
-		}
-	}
-
-	@FXML
-	void orderByDate(MouseEvent event) {
-		if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-			if (orderedByDate) {
-				incidentList.sort(comparatorIncident_byDate);
-				orderedByDate = true;
-			} else {
-				Collections.reverse(incidentList);
-				orderedByDate = false;
-			}
-		}
-	}
-
-	@FXML
-	void orderByUrgence(MouseEvent event) {
-		if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
-			if (orderedByUrgence) {
-				incidentList.sort(comparatorIncident_byUrgence);
-				orderedByUrgence = true;
-			} else {
-				Collections.reverse(incidentList);
-				orderedByUrgence = false;
-			}
 		}
 	}
 
@@ -148,10 +97,10 @@ public class ViewIncidentController {
 
 	@FXML
 	public void initialize() {
-		this.orderedByCat = false;
-		this.orderedByDate = false;
-		this.orderedByLieu = false;
-		this.orderedByUrgence = false;
+		this.orderedByCat = true;
+		this.orderedByDate = true;
+		this.orderedByLieu = true;
+		this.orderedByUrgence = true;
 
 		incidentList.addAll(new JsonManager().getIncidents());
 		listeViewIncidents.setItems(incidentList);
@@ -179,6 +128,51 @@ public class ViewIncidentController {
 								}
 							}
 						};
+					}
+				});
+
+		this.trieCat.addEventHandler(MouseEvent.MOUSE_CLICKED,
+				e -> {
+					if (orderedByCat) {
+						incidentList.sort(comparatorIncident_byCat);
+						orderedByCat = false;
+
+					} else {
+						Collections.reverse(incidentList);
+						orderedByCat = true;
+					}
+				});
+
+		this.trieDate.addEventHandler(MouseEvent.MOUSE_CLICKED,
+				e -> {
+					if (orderedByDate) {
+						incidentList.sort(comparatorIncident_byDate);
+						orderedByDate = false;
+					} else {
+						Collections.reverse(incidentList);
+						orderedByDate = true;
+					}
+				});
+
+		this.trieLieu.addEventHandler(MouseEvent.MOUSE_CLICKED,
+				e -> {
+					if (orderedByLieu) {
+						incidentList.sort(comparatorIncident_byLieu);
+						orderedByLieu = false;
+					} else {
+						Collections.reverse(incidentList);
+						orderedByLieu = true;
+					}
+				});
+
+		this.trieUrgence.addEventHandler(MouseEvent.MOUSE_CLICKED,
+				e -> {
+					if (orderedByUrgence) {
+						incidentList.sort(comparatorIncident_byUrgence);
+						orderedByUrgence = false;
+					} else {
+						Collections.reverse(incidentList);
+						orderedByUrgence = true;
 					}
 				});
 	}
