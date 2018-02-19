@@ -19,19 +19,8 @@ public class PopUpController {
 
     @FXML
     void new_declaration_button_clicked(MouseEvent event) {
-        String fxmlFile = "/fxml/declaration.fxml";
-        FXMLLoader loader = new FXMLLoader();
-        try {
             Stage stage = (Stage) new_declaration_button.getScene().getWindow();
-            Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-
-            Scene scene = new Scene(rootNode);
-            stage.setScene(scene);
-            ((DeclarationController) loader.getController()).initialize();
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            stage.close();
     }
 
     @FXML
@@ -40,6 +29,10 @@ public class PopUpController {
         FXMLLoader loader = new FXMLLoader();
         try {
             Stage stage = (Stage) ok_button.getScene().getWindow();
+
+            Stage stage2 = (Stage) stage.getOwner();
+            stage2.close();
+
             Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
             Scene scene = new Scene(rootNode);
