@@ -183,6 +183,7 @@ public class DeclarationController {
 
         if (incident.checkInput())
         {
+            this.clear();
             JsonManager jsonManager = new JsonManager();
             jsonManager.writeJson(incident);
             try {
@@ -307,6 +308,17 @@ public class DeclarationController {
                         "@etu.unice.fr"
                 );
         emaileDomaine.setItems(emaileDomaineList);
+    }
+
+    public void clear()
+    {
+        titre.clear();
+        categorie.getItems().clear();
+        description.clear();
+        localizationDetail.clear();
+        urgenceForte.setSelected(true);
+        email.clear();
+        localization.getItems().clear();
     }
 
 }
