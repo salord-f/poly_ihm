@@ -103,7 +103,6 @@ public class IncidentController {
 			default:
 				break;
 		}
-
 	}
 
 	private void showImage(String url, ImageView view) {
@@ -112,7 +111,7 @@ public class IncidentController {
 			view.setImage(image);
 			view.setCache(true);
 		} catch (Exception e) {
-			//
+			System.out.println(e);
 		}
 	}
 }
