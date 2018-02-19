@@ -60,10 +60,6 @@ public class Incident {
     }
 
     public boolean checkInput() {
-        if (getTitre().equals("") || getEmailDomaine().equals("") || getEmail().equals("")) {
-            return false;
-        } else {
-            return true;
-        }
+        return !getTitre().equals("") && !getEmailDomaine().equals("") && !getEmail().equals("");
     }
 }
