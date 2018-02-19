@@ -14,7 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class confirmationAnnulationController {
+public class ConfirmationAnnulationController {
 
     @FXML
     private Button YesButton;

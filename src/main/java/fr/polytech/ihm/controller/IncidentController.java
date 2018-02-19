@@ -70,7 +70,7 @@ public class IncidentController {
 			this.categorie.setText("No category");
 		} else this.categorie.setText(categorie);
 
-		this.titreIncident.setText(incident.getTitre());
+		this.titreIncident.setText(incident.getTitle());
 
 		String description = incident.getDescription();
 		if (description.equals("")) {

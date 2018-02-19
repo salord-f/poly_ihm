@@ -2,7 +2,7 @@ package fr.polytech.ihm.model;
 
 public class Incident {
     private String category;
-    private String titre;
+    private String title;
     private String description;
     private String image;
     private String location;
@@ -12,9 +12,9 @@ public class Incident {
     private String emailDomain;
     private String date;
 
-    public Incident(String category, String titre, String description, String image, String location, String locationDetail, int emergency, String email, String emailDomain, String date) {
+    public Incident(String category, String title, String description, String image, String location, String locationDetail, int emergency, String email, String emailDomain, String date) {
         this.category = category;
-        this.titre = titre;
+        this.title = title;
         this.description = description;
         this.image = image;
         this.location = location;
@@ -45,8 +45,8 @@ public class Incident {
         return location;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
     public String getImage() {
@@ -66,6 +66,6 @@ public class Incident {
     }
 
     public boolean checkInput() {
-        return !getTitre().equals("") && !getEmailDomain().equals("") && !getEmail().equals("");
+        return !getTitle().equals("") && !getEmailDomain().equals("") && !getEmail().equals("");
     }
 }
