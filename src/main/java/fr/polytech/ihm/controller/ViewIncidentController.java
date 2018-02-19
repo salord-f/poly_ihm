@@ -53,10 +53,10 @@ public class ViewIncidentController {
 
 	@FXML
 	private ListView<Incident> listeViewIncidents;
-	private Comparator<Incident> comparatorIncident_byCat = (inc1, inc2) -> inc1.getCategorie().compareToIgnoreCase(inc2.getCategorie());
-	private Comparator<Incident> comparatorIncident_byLieu = (inc1, inc2) -> inc1.getLocalisation().compareToIgnoreCase(inc2.getLocalisation());
+	private Comparator<Incident> comparatorIncident_byCat = (inc1, inc2) -> inc1.getCategory().compareToIgnoreCase(inc2.getCategory());
+	private Comparator<Incident> comparatorIncident_byLieu = (inc1, inc2) -> inc1.getLocation().compareToIgnoreCase(inc2.getLocation());
 	private Comparator<Incident> comparatorIncident_byDate = (inc1, inc2) -> inc1.getDate().compareToIgnoreCase(inc2.getDate());
-	private Comparator<Incident> comparatorIncident_byUrgence = Comparator.comparingInt(Incident::getUrgence);
+	private Comparator<Incident> comparatorIncident_byUrgence = Comparator.comparingInt(Incident::getEmergency);
 
 	@FXML
 	void openNewDeclaration(MouseEvent event) {

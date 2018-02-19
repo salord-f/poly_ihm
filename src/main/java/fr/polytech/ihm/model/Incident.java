@@ -1,36 +1,36 @@
 package fr.polytech.ihm.model;
 
 public class Incident {
-    private String categorie;
+    private String category;
     private String titre;
     private String description;
     private String image;
-    private String localisation;
-    private String localisationDetail;
-    private int urgence;
+    private String location;
+    private String locationDetail;
+    private int emergency;
     private String email;
-    private String emailDomaine;
+    private String emailDomain;
     private String date;
 
-    public Incident(String categorie, String titre, String description, String image, String localisation,String localisationDetail, int urgence, String email, String emailDomaine, String date) {
-        this.categorie = categorie;
+    public Incident(String category, String titre, String description, String image, String location, String locationDetail, int emergency, String email, String emailDomain, String date) {
+        this.category = category;
         this.titre = titre;
         this.description = description;
         this.image = image;
-        this.localisation = localisation;
-        this.localisationDetail = localisationDetail;
-        this.urgence = urgence;
+        this.location = location;
+        this.locationDetail = locationDetail;
+        this.emergency = emergency;
         this.email = email;
-        this.emailDomaine = emailDomaine;
+        this.emailDomain = emailDomain;
         this.date = date;
     }
 
-    public int getUrgence() {
-        return urgence;
+    public int getEmergency() {
+        return emergency;
     }
 
-    public String getCategorie() {
-        return categorie;
+    public String getCategory() {
+        return category;
     }
 
     public String getDescription() {
@@ -41,8 +41,8 @@ public class Incident {
         return email;
     }
 
-    public String getLocalisation() {
-        return localisation;
+    public String getLocation() {
+        return location;
     }
 
     public String getTitre() {
@@ -53,19 +53,19 @@ public class Incident {
         return image;
     }
 
-    public String getEmailDomaine() {
-        return emailDomaine;
+    public String getEmailDomain() {
+        return emailDomain;
     }
 
     public String getDate() {
         return date;
     }
 
-    public String getLocalisationDetail() {
-        return localisationDetail;
+    public String getLocationDetail() {
+        return locationDetail;
     }
 
     public boolean checkInput() {
-        return !getTitre().equals("") && !getEmailDomaine().equals("") && !getEmail().equals("");
+        return !getTitre().equals("") && !getEmailDomain().equals("") && !getEmail().equals("");
     }
 }

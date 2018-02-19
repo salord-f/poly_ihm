@@ -65,7 +65,7 @@ public class IncidentController {
 	private void fill(Incident incident) {
 		this.date.setText(incident.getDate());
 
-		String categorie = incident.getCategorie();
+		String categorie = incident.getCategory();
 		if (categorie.equals("")) {
 			this.categorie.setText("No category");
 		} else this.categorie.setText(categorie);
@@ -77,20 +77,20 @@ public class IncidentController {
 			this.description.setText("No description");
 		} else this.description.setText(description);
 
-		this.detailLieu.setText(incident.getLocalisation());
-		String detailLieu = incident.getLocalisation();
+		this.detailLieu.setText(incident.getLocation());
+		String detailLieu = incident.getLocation();
 		if (detailLieu.equals("")) {
 			this.detailLieu.setText("No detail");
 		} else this.detailLieu.setText(detailLieu);
 
-		this.email.setText(incident.getEmail() + incident.getEmailDomaine());
+		this.email.setText(incident.getEmail() + incident.getEmailDomain());
 
 		String image = incident.getImage();
 		if (!image.equals("")) {
 			showImage(image, imageIncident);
 		}
 
-		switch (incident.getUrgence()) {
+		switch (incident.getEmergency()) {
 			case 1:
 				showImage("images/green.png", urgenceIcon);
 				break;

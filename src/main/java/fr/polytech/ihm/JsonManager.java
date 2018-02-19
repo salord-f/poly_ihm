@@ -82,15 +82,15 @@ public class JsonManager {
     private JSONArray getParameters(Incident incident)
     {
         JSONArray list2 = new JSONArray();
-        list2.add(incident.getCategorie());
+        list2.add(incident.getCategory());
         list2.add(incident.getTitre());
         list2.add(incident.getDescription());
         list2.add(incident.getImage());
-        list2.add(incident.getLocalisation());
-        list2.add(incident.getLocalisationDetail());
-        list2.add(incident.getUrgence());
+        list2.add(incident.getLocation());
+        list2.add(incident.getLocationDetail());
+        list2.add(incident.getEmergency());
         list2.add(incident.getEmail());
-        list2.add(incident.getEmailDomaine());
+        list2.add(incident.getEmailDomain());
         list2.add(incident.getDate());
 
         return list2;
