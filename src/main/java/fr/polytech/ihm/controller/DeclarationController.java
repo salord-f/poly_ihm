@@ -273,7 +273,7 @@ public class DeclarationController {
 
         calendar = dateFormat.format(cal.getTime());
 
-        incident = new Incident(categorieConvert,titreConvert,descriptionConvert,joinConvert,localizationConvert,urgenceState,emailConvert,emaileDomaineConvert, calendar);
+        incident = new Incident(categorieConvert,titreConvert,descriptionConvert,joinConvert,localizationConvert, localizationDetailConvert,urgenceState,emailConvert,emaileDomaineConvert, calendar);
     }
 
     @FXML

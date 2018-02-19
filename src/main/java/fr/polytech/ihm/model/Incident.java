@@ -6,17 +6,19 @@ public class Incident {
     private String description;
     private String image;
     private String localisation;
+    private String localisationDetail;
     private int urgence;
     private String email;
     private String emailDomaine;
     private String date;
 
-    public Incident(String categorie, String titre, String description, String image, String localisation, int urgence, String email, String emailDomaine, String date) {
+    public Incident(String categorie, String titre, String description, String image, String localisation,String localisationDetail, int urgence, String email, String emailDomaine, String date) {
         this.categorie = categorie;
         this.titre = titre;
         this.description = description;
         this.image = image;
         this.localisation = localisation;
+        this.localisationDetail = localisationDetail;
         this.urgence = urgence;
         this.email = email;
         this.emailDomaine = emailDomaine;
@@ -57,6 +59,10 @@ public class Incident {
 
     public String getDate() {
         return date;
+    }
+
+    public String getLocalisationDetail() {
+        return localisationDetail;
     }
 
     public boolean checkInput() {

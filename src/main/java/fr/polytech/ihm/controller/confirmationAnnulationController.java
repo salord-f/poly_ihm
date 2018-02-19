@@ -35,7 +35,7 @@ public class confirmationAnnulationController {
 
             Stage stage2 = (Stage) stage.getOwner();
             stage2.close();
-            
+
             Parent root = FXMLLoader.load(
                     getClass().getResource("/fxml/viewIncidents.fxml"));
             stage.setScene(new Scene(root));
