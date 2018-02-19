@@ -138,6 +138,7 @@ public class ViewIncidentController {
 						orderedByCat = false;
 
 					} else {
+						incidentList.sort(comparatorIncident_byCat);
 						Collections.reverse(incidentList);
 						orderedByCat = true;
 					}
@@ -149,6 +150,7 @@ public class ViewIncidentController {
 						incidentList.sort(comparatorIncident_byDate);
 						orderedByDate = false;
 					} else {
+						incidentList.sort(comparatorIncident_byCat);
 						Collections.reverse(incidentList);
 						orderedByDate = true;
 					}
@@ -160,6 +162,7 @@ public class ViewIncidentController {
 						incidentList.sort(comparatorIncident_byLieu);
 						orderedByLieu = false;
 					} else {
+						incidentList.sort(comparatorIncident_byCat);
 						Collections.reverse(incidentList);
 						orderedByLieu = true;
 					}
@@ -171,6 +174,7 @@ public class ViewIncidentController {
 						incidentList.sort(comparatorIncident_byUrgence);
 						orderedByUrgence = false;
 					} else {
+						incidentList.sort(comparatorIncident_byCat);
 						Collections.reverse(incidentList);
 						orderedByUrgence = true;
 					}
