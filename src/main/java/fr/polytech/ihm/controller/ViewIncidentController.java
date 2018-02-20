@@ -1,6 +1,7 @@
 package fr.polytech.ihm.controller;
 
 import fr.polytech.ihm.JsonManager;
+import fr.polytech.ihm.model.Emergency;
 import fr.polytech.ihm.model.Incident;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,10 +57,10 @@ public class ViewIncidentController {
 
 	@FXML
 	private ListView<Incident> listeViewIncidents;
-	private Comparator<Incident> comparatorIncident_byCat = Comparator.comparing(Incident::getCategory);
-	private Comparator<Incident> comparatorIncident_byLieu = Comparator.comparing(Incident::getLocation);
+	private Comparator<Incident> comparatorIncident_byCat = Comparator.comparing(incident -> incident.getCategory().getName());
+	private Comparator<Incident> comparatorIncident_byLieu = Comparator.comparing(incident -> incident.getLocation().getName());
 	private Comparator<Incident> comparatorIncident_byDate = Comparator.comparing(Incident::getDate);
-	private Comparator<Incident> comparatorIncident_byUrgence = Comparator.comparingInt(Incident::getEmergency);
+	private Comparator<Incident> comparatorIncident_byUrgence = Comparator.comparingInt(incident -> incident.getEmergency().ordinal());
 
 	@FXML
 	void openNewDeclaration(MouseEvent event) {
@@ -69,7 +70,7 @@ public class ViewIncidentController {
 			Parent root = FXMLLoader.load(
 					getClass().getResource("/fxml/declaration.fxml"));
 			stage.setScene(new Scene(root));
-			stage.setTitle("Déclaration");
+			stage.setTitle("Déclaration d'un nouvel incident");
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

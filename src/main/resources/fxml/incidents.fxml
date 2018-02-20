@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="400.0" maxWidth="780.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="780.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.IncidentController">
+<VBox maxHeight="400.0" maxWidth="780.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="780.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.IncidentController">
    <children>
       <GridPane fx:id="infoGlobals">
          <columnConstraints>
@@ -28,6 +28,7 @@
             <Label fx:id="categorie" contentDisplay="CENTER" text="Voiture" GridPane.columnIndex="4" />
             <ImageView fx:id="urgenceIcon" fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
             <ImageView fx:id="lieuIcon" fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+            <Label fx:id="detailLieu" prefHeight="34.0" text="Detail Lieu" GridPane.columnIndex="3" />
          </children>
       </GridPane>
       <HBox>
@@ -70,7 +71,6 @@
                   <Insets />
                </GridPane.margin>
             </Label>
-            <Label fx:id="detailLieu" prefHeight="34.0" text="Detail Lieu" GridPane.columnIndex="1" />
             <ImageView fx:id="imageIncident" fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
          </children>
       </GridPane>

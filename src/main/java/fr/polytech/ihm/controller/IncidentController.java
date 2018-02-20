@@ -65,22 +65,22 @@ public class IncidentController {
 	private void fill(Incident incident) {
 		this.date.setText(incident.getDate());
 
-		String categorie = incident.getCategory();
-		if (categorie.equals("")) {
-			this.categorie.setText("No category");
-		} else this.categorie.setText(categorie);
+		String category = incident.getCategory().getName();
+		if (category.equals("")) {
+			this.categorie.setText("Pas de catégorie");
+		} else this.categorie.setText(category);
 
 		this.titreIncident.setText(incident.getTitle());
 
 		String description = incident.getDescription();
 		if (description.equals("")) {
-			this.description.setText("No description");
+			this.description.setText("Pas de description");
 		} else this.description.setText(description);
 
-		this.detailLieu.setText(incident.getLocation());
-		String detailLieu = incident.getLocation();
+		this.detailLieu.setText(incident.getLocation().getName());
+		String detailLieu = incident.getLocation().getName();
 		if (detailLieu.equals("")) {
-			this.detailLieu.setText("No detail");
+			this.detailLieu.setText("Pas de details");
 		} else this.detailLieu.setText(detailLieu);
 
 		this.email.setText(incident.getEmail() + incident.getEmailDomain());
@@ -91,13 +91,13 @@ public class IncidentController {
 		}
 
 		switch (incident.getEmergency()) {
-			case 1:
+			case LOW:
 				showImage("images/green.png", urgenceIcon);
 				break;
-			case 2:
+			case MEDIUM:
 				showImage("images/orange.png", urgenceIcon);
 				break;
-			case 3:
+			case HIGH:
 				showImage("images/red.png", urgenceIcon);
 				break;
 			default:
@@ -111,7 +111,7 @@ public class IncidentController {
 			view.setImage(image);
 			view.setCache(true);
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println(e.getMessage());
 		}
 	}
 }
