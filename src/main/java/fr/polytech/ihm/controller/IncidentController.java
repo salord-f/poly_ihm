@@ -2,16 +2,20 @@ package fr.polytech.ihm.controller;
 
 import fr.polytech.ihm.model.Incident;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.File;
 
 public class IncidentController {
-
-	@FXML
-	private GridPane infoGlobals;
 
 	@FXML
 	private Label date;
@@ -41,13 +45,10 @@ public class IncidentController {
 	private Label detailLieu;
 
 	@FXML
-	private ImageView imageIncident;
-
-	@FXML
-	private Label emailTitle;
-
-	@FXML
 	private Label email;
+
+	@FXML
+	private Button voirImage;
 
 	@FXML
 	public void initialize(Incident incident) {
@@ -60,6 +61,8 @@ public class IncidentController {
 			infoSupp.setManaged(!infoSupp.isManaged());
 			infoSupp.setVisible(!infoSupp.isVisible());
 		});
+
+
 	}
 
 	private void fill(Incident incident) {
@@ -86,8 +89,8 @@ public class IncidentController {
 		this.email.setText(incident.getEmail() + incident.getEmailDomain());
 
 		String image = incident.getImage();
-		if (!image.equals("")) {
-			showImage(image, imageIncident);
+		if (image.equals("")) {
+			voirImage.setVisible(false);
 		}
 
 		switch (incident.getEmergency()) {
@@ -103,15 +106,42 @@ public class IncidentController {
 			default:
 				break;
 		}
+
+		this.voirImage.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED,
+				e -> {
+					openImage();
+				});
 	}
+
 
 	private void showImage(String url, ImageView view) {
 		try {
-			Image image = new Image(url);
+			File file = new File(url);
+			Image image = new Image(file.toURI().toString());
 			view.setImage(image);
-			view.setCache(true);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+	}
+
+	@FXML
+	void openImage() {
+		try {
+			Stage stage = new Stage();
+
+			Stage stage2 = (Stage) voirImage.getScene().getWindow();
+
+			Parent root = FXMLLoader.load(
+					getClass().getResource("/fxml/image.fxml")); //TODO
+			stage.setScene(new Scene(root));
+			stage.setTitle("Image");
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.initOwner(stage2);
+			stage.show();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
 		}
 	}
 }
