@@ -116,10 +116,5 @@ public class JsonManager {
         return incidents;
     }
 
-    public static void main(String[] args){
-        JsonManager aaa=new JsonManager();
-        Incident incident=new Incident("A","B","C","D","E","F",1,"G","J","K");
-        aaa.writeJson(incident);
-    }
 
 }
