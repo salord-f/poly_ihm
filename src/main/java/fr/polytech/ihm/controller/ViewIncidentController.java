@@ -79,14 +79,16 @@ public class ViewIncidentController {
 
 	@FXML
 	void search(KeyEvent event) {
-		if (event.getEventType()== KeyEvent.KEY_RELEASED) {
+		incidentList.clear();
+		incidentList.addAll(incidentListSearch);
+		if (event.getCode() == KeyCode.ENTER) {
 			//TODO order
-			String Text = event.getText(); //TODO
+			String Text = rechercherIncident.getText(); //TODO
 
-			if (Text.length() == 0 ) {
+			/*if (Text.length() == 0 ) {
 				incidentList.clear();
 				incidentList.addAll(incidentListSearch);
-			}
+			}*/
 
 			/*Iterator<String> iter = myArrayList.iterator();
 
@@ -103,6 +105,7 @@ public class ViewIncidentController {
 						incident.getTitle().toLowerCase().contains(Text)) {
 				} else {
 					incidentList.remove(incident);
+					listeViewIncidents.setItems(incidentList);
 				}
 			}
 		}
@@ -136,7 +139,7 @@ public class ViewIncidentController {
 										String fxmlFile = "/fxml/incidents.fxml";
 										FXMLLoader loader = new FXMLLoader();
 										Parent listElement = loader.load(getClass().getResourceAsStream(fxmlFile));
-										((IncidentController) loader.getController()).initialize(item);
+										((IncidentController) loader.getController()).initialize(item); //TODO
 										// Display content of the fxml file
 										this.setGraphic(listElement);
 									} catch (IOException e) {

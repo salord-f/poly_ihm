@@ -298,12 +298,12 @@ public class DeclarationController {
     public void clear()
     {
         titre.clear();
-        categorie.getItems().clear();
+        //categorie.getItems().clear();
         description.clear();
         localizationDetail.clear();
         urgenceForte.setSelected(true);
         email.clear();
-        localization.getItems().clear();
+        //localization.getItems().clear();
     }
 
 }
