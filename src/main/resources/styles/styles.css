@@ -8,22 +8,6 @@
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
-.button {
-    -fx-text-fill: white;
-    -fx-padding: 10 3 3 3;
-    -fx-font-family: "Verdana";
-    -fx-font-weight: bold;
-    -fx-font-size: 12px;
-    -fx-background-color: #51A1F3;
-}
-
-.button:hover{
-    -fx-base: #8FC3F9;
-}
-
-.radio-button .dot:focused{
-    -fx-background-color: #51A1F3;
-}
 
 .text-area {
     -fx-border-radius: 18px;
