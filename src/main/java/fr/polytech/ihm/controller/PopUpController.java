@@ -49,7 +49,9 @@ public class PopUpController {
 
 			Parent root = FXMLLoader.load(
 					getClass().getResource("/fxml/viewIncidents.fxml"));
-			stage.setScene(new Scene(root));
+			Scene s = new Scene(root);
+			stage.setScene(s);
+			s.getStylesheets().add("/styles/styles.css");
 			stage.setTitle("Confirmation de la déclaration");
 
 			stage.initModality(Modality.WINDOW_MODAL);

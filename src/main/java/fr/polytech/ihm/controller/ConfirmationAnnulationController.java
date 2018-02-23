@@ -48,7 +48,9 @@ public class ConfirmationAnnulationController {
 
 			Parent root = FXMLLoader.load(
 					getClass().getResource("/fxml/viewIncidents.fxml"));
-			stage.setScene(new Scene(root));
+			Scene s = new Scene(root);
+			stage.setScene(s);
+			s.getStylesheets().add("/styles/styles.css");
 			stage.setTitle("Liste des incidents déclarés");
 
 			stage.initModality(Modality.WINDOW_MODAL);

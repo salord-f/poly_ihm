@@ -69,7 +69,9 @@ public class ViewIncidentController {
 
 			Parent root = FXMLLoader.load(
 					getClass().getResource("/fxml/declaration.fxml"));
-			stage.setScene(new Scene(root));
+			Scene s = new Scene(root);
+			stage.setScene(s);
+			s.getStylesheets().add("/styles/styles.css");
 			stage.setTitle("Déclaration d'un nouvel incident");
 			stage.show();
 		} catch (Exception e) {

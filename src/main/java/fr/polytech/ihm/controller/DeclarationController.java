@@ -145,7 +145,9 @@ public class DeclarationController {
 
                 Parent root = FXMLLoader.load(
                         getClass().getResource("/fxml/confirmationAnnulation.fxml")); //TODO
-                stage.setScene(new Scene(root));
+                Scene s = new Scene(root);
+                stage.setScene(s);
+                s.getStylesheets().add("/styles/styles.css");
                 stage.setTitle("Quitter la déclaration");
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.initOwner(stage2);
@@ -162,7 +164,9 @@ public class DeclarationController {
 
                 Parent root = FXMLLoader.load(
                         getClass().getResource("/fxml/viewIncidents.fxml"));
-                stage.setScene(new Scene(root));
+                Scene s = new Scene(root);
+                stage.setScene(s);
+                s.getStylesheets().add("/styles/styles.css");
                 stage.setTitle("Liste des incidents");
                 stage.show();
             } catch (Exception e) {
@@ -189,7 +193,9 @@ public class DeclarationController {
 
                 Parent root = FXMLLoader.load(
                         getClass().getResource("/fxml/popupConfirmation.fxml"));
-                stage.setScene(new Scene(root));
+                Scene s = new Scene(root);
+                stage.setScene(s);
+                s.getStylesheets().add("/styles/styles.css");
                 stage.setTitle("Confirmation de la déclaration");
 
                 stage.initModality(Modality.WINDOW_MODAL);
@@ -209,7 +215,9 @@ public class DeclarationController {
 
                 Parent root = FXMLLoader.load(
                         getClass().getResource("/fxml/incorrectDeclaration.fxml")); //TODO
-                stage.setScene(new Scene(root));
+                Scene s = new Scene(root);
+                stage.setScene(s);
+                s.getStylesheets().add("/styles/styles.css");
                 stage.setTitle("Erreur de remplissage");
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.initOwner(stage2);

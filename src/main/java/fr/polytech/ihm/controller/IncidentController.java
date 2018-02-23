@@ -133,7 +133,9 @@ public class IncidentController {
 
 			Parent root = FXMLLoader.load(
 					getClass().getResource("/fxml/image.fxml")); //TODO
-			stage.setScene(new Scene(root));
+			Scene s = new Scene(root);
+			stage.setScene(s);
+			s.getStylesheets().add("/styles/styles.css");
 			stage.setTitle("Image");
 			stage.initModality(Modality.WINDOW_MODAL);
 			stage.initOwner(stage2);
