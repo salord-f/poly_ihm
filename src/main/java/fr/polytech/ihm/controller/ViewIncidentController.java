@@ -99,26 +99,6 @@ public class ViewIncidentController {
 
 		FilteredList<Incident> filteredData = new FilteredList<>(incidentList, p -> true);
 
-		//Found on http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
-		rechercherIncident.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(person -> {
-						// If filter text is empty, display all persons.
-						if (newValue == null || newValue.isEmpty()) {
-							return true;
-						}
-
-						// Compare first name and last name of every person with filter text.
-						String lowerCaseFilter = newValue.toLowerCase();
-
-						if (person.getTitle().toLowerCase().contains(lowerCaseFilter)) {
-							return true; // Filter matches first name.
-						} else if (person.getEmail().toLowerCase().contains(lowerCaseFilter)) {
-							return true; // Filter matches last name.
-						}
-						return false;
-					});
-				});
-
 		SortedList<Incident> sortedData = new SortedList<>(filteredData);
 
 		listeViewIncidents.setItems(sortedData);
@@ -203,6 +183,26 @@ public class ViewIncidentController {
 						orderedByUrgence = true;
 					}
 				});
+
+		//Found on http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
+		this.rechercherIncident.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(person -> {
+				// If filter text is empty, display all persons.
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+
+				if (person.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+					return true; // Filter matches first name.
+				} else if (person.getEmail().toLowerCase().contains(lowerCaseFilter)) {
+					return true; // Filter matches last name.
+				}
+				return false;
+			});
+		});
 	}
 
 }
