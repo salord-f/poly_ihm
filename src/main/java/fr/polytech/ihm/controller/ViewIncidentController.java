@@ -5,6 +5,8 @@ import fr.polytech.ihm.model.Emergency;
 import fr.polytech.ihm.model.Incident;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,8 +28,10 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class ViewIncidentController {
+	boolean test = true;
 	private ObservableList<Incident> incidentList = FXCollections.observableArrayList();
-	ObservableList<Incident> incidentListSearch = FXCollections.observableArrayList();
+	private ObservableList<Incident> incidentListSearch = FXCollections.observableArrayList();
+	String Text = null;
 
 	private boolean orderedByCat;
 	private boolean orderedByLieu;
@@ -61,6 +65,8 @@ public class ViewIncidentController {
 	private Comparator<Incident> comparatorIncident_byLieu = Comparator.comparing(incident -> incident.getLocation().getName());
 	private Comparator<Incident> comparatorIncident_byDate = Comparator.comparing(Incident::getDate);
 	private Comparator<Incident> comparatorIncident_byUrgence = Comparator.comparingInt(incident -> incident.getEmergency().ordinal());
+	private Comparator<Incident> comparatorIncident_byCara = Comparator.comparing(incident -> incident.getTitle());
+
 
 	@FXML
 	void openNewDeclaration(MouseEvent event) {
@@ -79,37 +85,6 @@ public class ViewIncidentController {
 
 	@FXML
 	void search(KeyEvent event) {
-		incidentList.clear();
-		incidentList.addAll(incidentListSearch);
-		if (event.getCode() == KeyCode.ENTER) {
-			//TODO order
-			String Text = rechercherIncident.getText(); //TODO
-
-			/*if (Text.length() == 0 ) {
-				incidentList.clear();
-				incidentList.addAll(incidentListSearch);
-			}*/
-
-			/*Iterator<String> iter = myArrayList.iterator();
-
-			while (iter.hasNext()) {
-				String str = iter.next();
-
-				if (someCondition)
-					iter.remove();*/
-
-			for (Incident incident : incidentListSearch) {
-				if (incident.getEmail().toLowerCase().contains(Text) ||
-						/*incident.getLocation().toLowerCase().contains(Text) ||
-						incident.getCategory().toLowerCase().contains(Text) ||*/
-						incident.getTitle().toLowerCase().contains(Text)) {
-				} else {
-					incidentList.remove(incident);
-					listeViewIncidents.setItems(incidentList);
-				}
-			}
-		}
-
 	}
 
 	@FXML
@@ -120,10 +95,32 @@ public class ViewIncidentController {
 		this.orderedByUrgence = true;
 
 		incidentList.addAll(new JsonManager().getIncidents());
-		listeViewIncidents.setItems(incidentList);
 
-		incidentListSearch.clear();
-		incidentListSearch.addAll(incidentList);
+		FilteredList<Incident> filteredData = new FilteredList<>(incidentList, p -> true);
+
+		//Found on http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
+		rechercherIncident.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(person -> {
+						// If filter text is empty, display all persons.
+						if (newValue == null || newValue.isEmpty()) {
+							return true;
+						}
+
+						// Compare first name and last name of every person with filter text.
+						String lowerCaseFilter = newValue.toLowerCase();
+
+						if (person.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+							return true; // Filter matches first name.
+						} else if (person.getEmail().toLowerCase().contains(lowerCaseFilter)) {
+							return true; // Filter matches last name.
+						}
+						return false;
+					});
+				});
+
+		SortedList<Incident> sortedData = new SortedList<>(filteredData);
+
+		listeViewIncidents.setItems(sortedData);
 
 		this.listeViewIncidents.setCellFactory(
 				new Callback<ListView<Incident>, ListCell<Incident>>() {
@@ -134,17 +131,22 @@ public class ViewIncidentController {
 							protected void updateItem(Incident item, boolean empty) {
 								super.updateItem(item, empty);
 								if (item != null) {
-									// Load fxml file for this internship
-									try {
-										String fxmlFile = "/fxml/incidents.fxml";
-										FXMLLoader loader = new FXMLLoader();
-										Parent listElement = loader.load(getClass().getResourceAsStream(fxmlFile));
-										((IncidentController) loader.getController()).initialize(item); //TODO
-										// Display content of the fxml file
-										this.setGraphic(listElement);
-									} catch (IOException e) {
-										e.printStackTrace();
+
+										try {
+											String fxmlFile = "/fxml/incidents.fxml";
+											FXMLLoader loader = new FXMLLoader();
+											Parent listElement = loader.load(getClass().getResourceAsStream(fxmlFile));
+											((IncidentController) loader.getController()).initialize(item); //TODO
+											// Display content of the fxml file
+											this.setGraphic(listElement);
+
+										} catch (IOException e) {
+											e.printStackTrace();
+										}
 									}
+								else {
+									this.setGraphic(null);
+									this.setText(null);
 								}
 							}
 						};
