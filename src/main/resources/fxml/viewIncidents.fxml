@@ -16,7 +16,7 @@
   <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0">
          <top>
-            <Label text="Incidents" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <Label fx:id="title" text="Incidents" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <font>
                   <Font size="36.0" />
                </font>
@@ -61,7 +61,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label text="Trier par :" />
+                        <Label fx:id="labelTrierPar" text="Trier par :" />
                         <Button fx:id="trieUrgence" mnemonicParsing="false" text="Urgence" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <Button fx:id="trieDate" mnemonicParsing="false" text="Date" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <Button fx:id="trieLieu" mnemonicParsing="false" text="Lieu" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />

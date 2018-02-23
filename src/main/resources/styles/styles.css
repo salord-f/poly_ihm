@@ -2,15 +2,70 @@
 
 .label {
     -fx-font-family: 'Open Sans';
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
+    -fx-font-size: 13px;
     -fx-text-fill: #333333;
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
+#title{
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #014978;
+    -fx-padding: 5 0 30 0 ;
 
+}
 .text-area {
     -fx-border-radius: 18px;
+    -fx-text-fill: #014978;
+}
+
+#declarerIncident{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#009EE0, #47C9FF);
+}
+
+/*CSS view incident*/
+
+#trierPar{
+    -fx-padding: 30 0 15 0 ;
+}
+
+#labelTrierPar{
+    -fx-font-size: 18px !important;
+    -fx-font-weight: bold;
+    -fx-text-fill: #014978;
+}
+
+#trieUrgence, #trieCat, #trieDate, #trieLieu{
+    -fx-background-color: none;
+    -fx-border-color: #009EE0;
+}
+
+#trieUrgence:hover, #trieCat:hover, #trieDate:hover, #trieLieu:hover{
+    -fx-background-color: none;
+    -fx-border-color: #47C9FF;
+}
+
+/*Css incident*/
+#titreIncident{
+    -fx-font-size: 13px !important;
+    -fx-font-size: bold !important;
+}
+
+#voirImage{
+    -fx-background-color: none;
+}
+
+#voirDescription{
+    -fx-background-color: none;
+    -fx-text-fill: #0019EF ;
+    -fx-font-size: 12px;
+}
+
+
+
+#infoGlobals:pressed{
+    -fx-text-fill: white;
 }
 
 
