@@ -199,7 +199,10 @@ public class ViewIncidentController {
 					return true; // Filter matches first name.
 				} else if (person.getEmail().toLowerCase().contains(lowerCaseFilter)) {
 					return true; // Filter matches last name.
+				}else if (person.getEmailDomain().toLowerCase().contains(lowerCaseFilter)) {
+					return true; // Filter matches last name.
 				}
+
 				return false;
 			});
 		});
