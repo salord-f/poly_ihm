@@ -7,10 +7,10 @@
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
-#title{
+#title, #declarationTitle{
     -fx-font-size: 25px;
     -fx-font-weight: bold;
-    -fx-text-fill: #014978;
+    -fx-text-fill: #014978 !important;
     -fx-padding: 5 0 30 0 ;
 
 }
@@ -47,21 +47,35 @@
 }
 
 /*Css incident*/
+
+.list-cell:filled:selected {
+    -fx-background-color: none;
+}
+
 #titreIncident{
     -fx-font-size: 13px !important;
-    -fx-font-size: bold !important;
+    -fx-text-fill: #014978;
+    -fx-font-weight: bold;
 }
 
 #voirImage{
     -fx-background-color: none;
 }
 
-#voirDescription{
-    -fx-background-color: none;
-    -fx-text-fill: #0019EF ;
-    -fx-font-size: 12px;
+#emailTitle{
+    -fx-text-fill: #009EE0;
 }
 
+#voirDescription{
+    -fx-background-color: none;
+}
+
+/*CSS déclaration d'une application*/
+
+#categorie, #localization,#emaileDomaine{
+    -fx-background-color: none;
+    -fx-border-color: #009EE0;
+}
 
 
 #infoGlobals:pressed{
