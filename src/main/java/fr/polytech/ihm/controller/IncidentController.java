@@ -9,13 +9,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.Collections;
 
 public class IncidentController {
+	Incident incident;
 
 	@FXML
 	private Label date;
@@ -53,8 +56,8 @@ public class IncidentController {
 	@FXML
 	public void initialize(Incident incident) {
 		//urgenceIcon.setImage(orange);
-
-		fill(incident);
+		this.incident = incident;
+		fill(this.incident);
 		infoSupp.setManaged(!infoSupp.isManaged());
 		infoSupp.setVisible(!infoSupp.isVisible());
 		voirDescription.setOnAction(event -> {
@@ -62,7 +65,8 @@ public class IncidentController {
 			infoSupp.setVisible(!infoSupp.isVisible());
 		});
 
-
+		this.voirImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
+				e -> openImage());
 	}
 
 	private void fill(Incident incident) {
@@ -95,22 +99,17 @@ public class IncidentController {
 
 		switch (incident.getEmergency()) {
 			case LOW:
-				showImage("images/green.png", urgenceIcon);
+				showImage("images" + File.separator + "green.png", urgenceIcon);
 				break;
 			case MEDIUM:
-				showImage("images/orange.png", urgenceIcon);
+				showImage("images" + File.separator + "orange.png", urgenceIcon);
 				break;
 			case HIGH:
-				showImage("images/red.png", urgenceIcon);
+				showImage("images" + File.separator + "red.png", urgenceIcon);
 				break;
 			default:
 				break;
 		}
-
-		this.voirImage.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED,
-				e -> {
-					openImage();
-				});
 	}
 
 
@@ -127,21 +126,35 @@ public class IncidentController {
 	@FXML
 	void openImage() {
 		try {
+			FXMLLoader loader = new FXMLLoader();
 			Stage stage = new Stage();
-
 			Stage stage2 = (Stage) voirImage.getScene().getWindow();
-
-			Parent root = FXMLLoader.load(
-					getClass().getResource("/fxml/image.fxml")); //TODO
-			stage.setScene(new Scene(root));
+			Parent root = loader.load(getClass().getResourceAsStream("/fxml/image.fxml")); //TODO
+			Scene s = new Scene(root);
+			stage.setScene(s);
+			s.getStylesheets().add("/styles/styles.css");
 			stage.setTitle("Image");
+			((ImageController) loader.getController()).initialize(incident.getImage());
 			stage.initModality(Modality.WINDOW_MODAL);
 			stage.initOwner(stage2);
 			stage.show();
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		/*try {
+			Stage stage2 = (Stage) zoneIncident.getScene().getWindow();
+			Stage stage = new Stage();
+			Parent rootNode = loader.load(getClass().getResourceAsStream("/fxml/missing.fxml"));
+			Scene scene = new Scene(rootNode);
+			scene.getStylesheets().add("/styles/styles.css");
+			stage.setScene(scene);
+			((MissingController) loader.getController()).initialize(cat);
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.initOwner(stage2);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}*/
 	}
 }

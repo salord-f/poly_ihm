@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.DeclarationController">
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.DeclarationController" fx:id="pagedeclaration">
    <top>
       <Text fx:id="declarationTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Déclaration" textAlignment="CENTER" wrappingWidth="200" BorderPane.alignment="CENTER">
          <font>
@@ -132,7 +132,7 @@
                               <ToggleGroup fx:id="urgence" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="urgenceFaible" mnemonicParsing="false" selected="true" text="Faible" toggleGroup="$urgence">
+                        <RadioButton fx:id="urgenceFaible" mnemonicParsing="false" text="Faible" toggleGroup="$urgence">
                            <FlowPane.margin>
                               <Insets />
                            </FlowPane.margin>
@@ -140,7 +140,7 @@
                               <Font size="12.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="urgenceMoyenne" mnemonicParsing="false" selected="true" text="Moyenne" toggleGroup="$urgence">
+                        <RadioButton fx:id="urgenceMoyenne" mnemonicParsing="false" text="Moyenne" toggleGroup="$urgence">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -148,7 +148,7 @@
                               <Insets />
                            </FlowPane.margin>
                         </RadioButton>
-                        <RadioButton fx:id="urgenceForte" mnemonicParsing="false" selected="true" text="Forte" toggleGroup="$urgence">
+                        <RadioButton fx:id="urgenceForte" mnemonicParsing="false" text="Forte" toggleGroup="$urgence">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -181,7 +181,9 @@
                      </children>
                   </FlowPane>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* champs obligatoires." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
-                  <FlowPane hgap="100.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <FlowPane fx:id="buttonValidate" hgap="100.0" prefHeight="200.0" prefWidth="200.0"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="8">
                      <children>
                         <Button fx:id="envoyer" alignment="TOP_CENTER" maxHeight="35.0" maxWidth="95.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" onAction="#envoyerAction" prefHeight="35.0" prefWidth="95.0" text="Envoyer">
                            <font>

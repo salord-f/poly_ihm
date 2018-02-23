@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class ConfirmationAnnulationController {
 
 	@FXML
@@ -25,38 +27,22 @@ public class ConfirmationAnnulationController {
 
 	@FXML
 	public void YesButtonAction(ActionEvent event) { //TODO
-        /*try {
-            Stage stage = (Stage) YesButton.getScene().getWindow();
-
-            Stage stage2 = (Stage) stage.getOwner();
-            stage2.close();
-
-            Parent root = FXMLLoader.load(
-                    getClass().getResource("/fxml/viewIncidents.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Liste des incidents déclarés");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
+		String fxmlFile = "/fxml/viewIncidents.fxml";
+		FXMLLoader loader = new FXMLLoader();
 		try {
-			Stage stage2 = (Stage) YesButton.getScene().getWindow();
+			Stage stage = (Stage) YesButton.getScene().getWindow();
 
-			Stage stage = new Stage();
+			Stage stage2 = (Stage) stage.getOwner();
 
+			Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
-			Parent root = FXMLLoader.load(
-					getClass().getResource("/fxml/viewIncidents.fxml"));
-			stage.setScene(new Scene(root));
-			stage.setTitle("Liste des incidents déclarés");
-
-			stage.initModality(Modality.WINDOW_MODAL);
-			stage.initOwner(stage2);
-			stage.show();
-		} catch (Exception e) {
+			Scene scene = new Scene(rootNode);
+			stage2.setScene(scene);
+			stage.close();
+			stage2.setTitle("Liste des déclarations");
+			stage2.show();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
 }

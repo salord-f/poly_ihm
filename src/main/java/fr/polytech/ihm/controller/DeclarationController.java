@@ -114,17 +114,16 @@ public class DeclarationController {
         fileChooser.setTitle("Choisissez une image");
         File URL = fileChooser.showOpenDialog(join.getScene().getWindow());
 
-        String file = "./";
-
-        Path currentDirectory = new File(file + URL.getName()).toPath();
-
-        try {
-            Files.copy(URL.toPath(),currentDirectory, StandardCopyOption.REPLACE_EXISTING);
+        String file = "." + File.separator;
+        if(URL != null) {
+            Path currentDirectory = new File(file + URL.getName()).toPath();
+            try {
+                Files.copy(URL.toPath(), currentDirectory, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            joinConvert = currentDirectory.toString();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        joinConvert = currentDirectory.toString();
     }
 
     @FXML
@@ -145,7 +144,9 @@ public class DeclarationController {
 
                 Parent root = FXMLLoader.load(
                         getClass().getResource("/fxml/confirmationAnnulation.fxml")); //TODO
-                stage.setScene(new Scene(root));
+                Scene s = new Scene(root);
+                stage.setScene(s);
+                s.getStylesheets().add("/styles/styles.css");
                 stage.setTitle("Quitter la déclaration");
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.initOwner(stage2);
@@ -162,7 +163,9 @@ public class DeclarationController {
 
                 Parent root = FXMLLoader.load(
                         getClass().getResource("/fxml/viewIncidents.fxml"));
-                stage.setScene(new Scene(root));
+                Scene s = new Scene(root);
+                stage.setScene(s);
+                s.getStylesheets().add("/styles/styles.css");
                 stage.setTitle("Liste des incidents");
                 stage.show();
             } catch (Exception e) {
@@ -189,7 +192,9 @@ public class DeclarationController {
 
                 Parent root = FXMLLoader.load(
                         getClass().getResource("/fxml/popupConfirmation.fxml"));
-                stage.setScene(new Scene(root));
+                Scene s = new Scene(root);
+                stage.setScene(s);
+                s.getStylesheets().add("/styles/styles.css");
                 stage.setTitle("Confirmation de la déclaration");
 
                 stage.initModality(Modality.WINDOW_MODAL);
@@ -209,7 +214,9 @@ public class DeclarationController {
 
                 Parent root = FXMLLoader.load(
                         getClass().getResource("/fxml/incorrectDeclaration.fxml")); //TODO
-                stage.setScene(new Scene(root));
+                Scene s = new Scene(root);
+                stage.setScene(s);
+                s.getStylesheets().add("/styles/styles.css");
                 stage.setTitle("Erreur de remplissage");
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.initOwner(stage2);
@@ -281,10 +288,12 @@ public class DeclarationController {
     {
         ObservableList<String> categorieList = FXCollections.observableArrayList();
         for (int i = 0; i < Category.values().length; i++) categorieList.add(Category.values()[i].getName());
+        categorieList.remove("");
         categorie.setItems(categorieList);
 
         ObservableList<String> localizationList = FXCollections.observableArrayList();
         for (int i = 0; i < Location.values().length; i++) localizationList.add(Location.values()[i].getName());
+        localizationList.remove("");
         localization.setItems(localizationList);
 
         ObservableList<String> emaileDomaineList =

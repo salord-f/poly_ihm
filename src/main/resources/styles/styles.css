@@ -2,31 +2,128 @@
 
 .label {
     -fx-font-family: 'Open Sans';
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
+    -fx-font-size: 13px;
     -fx-text-fill: #333333;
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
-.button {
-    -fx-text-fill: white;
-    -fx-padding: 10 3 3 3;
-    -fx-font-family: "Verdana";
+#title, #declarationTitle{
+    -fx-font-size: 25px;
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
-    -fx-background-color: #51A1F3;
-}
+    -fx-text-fill: #014978 !important;
+    -fx-padding: 5 0 30 0 ;
 
-.button:hover{
-    -fx-base: #8FC3F9;
 }
-
-.radio-button .dot:focused{
-    -fx-background-color: #51A1F3;
-}
-
 .text-area {
     -fx-border-radius: 18px;
+    -fx-text-fill: #014978;
+}
+
+#declarerIncident{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#009EE0, #47C9FF);
+}
+
+/*CSS view incident*/
+
+#trierPar{
+    -fx-padding: 30 0 15 0 ;
+}
+
+#labelTrierPar{
+    -fx-font-size: 18px !important;
+    -fx-font-weight: bold;
+    -fx-text-fill: #014978;
+}
+
+#trieUrgence, #trieCat, #trieDate, #trieLieu{
+    -fx-background-color: none;
+    -fx-border-color: #009EE0;
+}
+
+#trieUrgence:hover, #trieCat:hover, #trieDate:hover, #trieLieu:hover{
+    -fx-background-color: none;
+    -fx-border-color: #47C9FF;
+}
+
+/*Css incident*/
+
+.list-cell:filled:selected {
+    -fx-background-color: none;
+}
+
+#titreIncident{
+    -fx-font-size: 13px !important;
+    -fx-text-fill: #014978;
+    -fx-font-weight: bold;
+}
+
+#voirImage{
+    -fx-background-color: none;
+}
+
+#emailTitle{
+    -fx-text-fill: #009EE0;
+}
+
+#voirDescription{
+    -fx-background-color: none;
+}
+
+/*CSS déclaration d'une application*/
+
+#pagedeclaration #categorie,
+#localization,#emaileDomaine{
+    -fx-background-color: none;
+    -fx-border-color: #009EE0;
+}
+
+
+#infoGlobals:pressed{
+    -fx-text-fill: white;
+}
+
+#pagedeclaration #titre,
+#pagedeclaration #description,
+#pagedeclaration #localizationDetail,
+#pagedeclaration #email{
+    -fx-border-color: #009EE0;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+}
+
+#pagedeclaration #envoyer,
+#pagedeclaration #retour{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#009EE0, #47C9FF);
+    -fx-padding: 3 0 0 0;
+}
+
+#buttonValidate{
+    -fx-padding: 30 0 0 0;
+}
+
+
+/*CSS POP-UP*/
+#okButton,
+#ok_button,
+#new_declaration_button{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#009EE0, #47C9FF);
+    -fx-border-color: #014978;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+}
+
+#title_pop_up{
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #014978 !important;
+    -fx-padding: 0 0 10 0;
+}
+
+#text_pop_up{
+    -fx-padding: 0 0 15 0;
 }
 
 

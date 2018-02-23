@@ -1,13 +1,12 @@
 package fr.polytech.ihm.controller;
 
 import fr.polytech.ihm.JsonManager;
-import fr.polytech.ihm.model.Emergency;
 import fr.polytech.ihm.model.Incident;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -75,7 +74,9 @@ public class ViewIncidentController {
 
 			Parent root = FXMLLoader.load(
 					getClass().getResource("/fxml/declaration.fxml"));
-			stage.setScene(new Scene(root));
+			Scene s = new Scene(root);
+			stage.setScene(s);
+			s.getStylesheets().add("/styles/styles.css");
 			stage.setTitle("Déclaration d'un nouvel incident");
 			stage.show();
 		} catch (Exception e) {
@@ -121,6 +122,7 @@ public class ViewIncidentController {
 		SortedList<Incident> sortedData = new SortedList<>(filteredData);
 
 		listeViewIncidents.setItems(sortedData);
+
 
 		this.listeViewIncidents.setCellFactory(
 				new Callback<ListView<Incident>, ListCell<Incident>>() {

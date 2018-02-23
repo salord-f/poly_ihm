@@ -9,6 +9,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class PopUpController {
 	@FXML
 	private Button ok_button;
@@ -24,22 +26,23 @@ public class PopUpController {
 
 	@FXML
 	void ok_button_clicked(MouseEvent event) {
-        /*String fxmlFile = "/fxml/viewIncidents.fxml";
+        String fxmlFile = "/fxml/viewIncidents.fxml";
         FXMLLoader loader = new FXMLLoader();
         try {
             Stage stage = (Stage) ok_button.getScene().getWindow();
 
             Stage stage2 = (Stage) stage.getOwner();
-            stage2.close();
 
             Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
             Scene scene = new Scene(rootNode);
-            stage.setScene(scene);
-            stage.show();
+            stage2.setScene(scene);
+            stage.close();
+            stage2.setTitle("Liste des déclarations");
+            stage2.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }/*
 
 		try {
 			Stage stage2 = (Stage) ok_button.getScene().getWindow();
@@ -49,7 +52,9 @@ public class PopUpController {
 
 			Parent root = FXMLLoader.load(
 					getClass().getResource("/fxml/viewIncidents.fxml"));
-			stage.setScene(new Scene(root));
+			Scene s = new Scene(root);
+			stage.setScene(s);
+			s.getStylesheets().add("/styles/styles.css");
 			stage.setTitle("Confirmation de la déclaration");
 
 			stage.initModality(Modality.WINDOW_MODAL);
@@ -57,6 +62,6 @@ public class PopUpController {
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
