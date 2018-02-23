@@ -1,11 +1,9 @@
 package fr.polytech.ihm.controller;
 
 import fr.polytech.ihm.JsonManager;
-import fr.polytech.ihm.model.Emergency;
 import fr.polytech.ihm.model.Incident;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -81,11 +79,13 @@ public class ViewIncidentController {
 
 	@FXML
 	void search(KeyEvent event) {
-		incidentList.clear();
-		incidentList.addAll(incidentListSearch);
+
+		//incidentList.addAll(incidentListSearch);
 		if (event.getCode() == KeyCode.ENTER) {
+			//incidentListSearch.addAll(incidentList);
+			//incidentList.clear();
 			//TODO order
-			String Text = rechercherIncident.getText(); //TODO
+			String text = rechercherIncident.getText(); //TODO
 
 			/*if (Text.length() == 0 ) {
 				incidentList.clear();
@@ -100,19 +100,24 @@ public class ViewIncidentController {
 				if (someCondition)
 					iter.remove();*/
 
+			incidentList.removeIf(i -> !i.getEmail().toLowerCase().contains(text));
+			listeViewIncidents.setItems(incidentList);/*
 			for (Incident incident : incidentListSearch) {
-				if (incident.getEmail().toLowerCase().contains(Text) ||
+				if (incident.getEmail().toLowerCase().contains(text) ||
 						/*incident.getLocation().toLowerCase().contains(Text) ||
-						incident.getCategory().toLowerCase().contains(Text) ||*/
-						incident.getTitle().toLowerCase().contains(Text)) {
-				} else {
-					incidentList.remove(incident);
-					listeViewIncidents.setItems(incidentList);
-				}
+						incident.getCategory().toLowerCase().contains(Text) ||
+						incident.getTitle().toLowerCase().contains(text)) {
+					incidentList.add(incident);
+				}/*
+						if(!incident.getEmail().toLowerCase().contains(text) && incident.getTitle().toLowerCase().contains(text)){
+
+						}*/
 			}
+			//listeViewIncidents.getSelectionModel().clearSelection();
+
 		}
 
-	}
+
 
 	@FXML
 	public void initialize() {
@@ -124,8 +129,8 @@ public class ViewIncidentController {
 		incidentList.addAll(new JsonManager().getIncidents());
 		listeViewIncidents.setItems(incidentList);
 
-		incidentListSearch.clear();
-		incidentListSearch.addAll(incidentList);
+		//incidentListSearch.clear();
+		//incidentListSearch.addAll(incidentList);
 
 		this.listeViewIncidents.setCellFactory(
 				new Callback<ListView<Incident>, ListCell<Incident>>() {
