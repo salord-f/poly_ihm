@@ -72,7 +72,8 @@
 
 /*CSS déclaration d'une application*/
 
-#categorie, #localization,#emaileDomaine{
+#pagedeclaration #categorie,
+#localization,#emaileDomaine{
     -fx-background-color: none;
     -fx-border-color: #009EE0;
 }
@@ -80,6 +81,49 @@
 
 #infoGlobals:pressed{
     -fx-text-fill: white;
+}
+
+#pagedeclaration #titre,
+#pagedeclaration #description,
+#pagedeclaration #localizationDetail,
+#pagedeclaration #email{
+    -fx-border-color: #009EE0;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+}
+
+#pagedeclaration #envoyer,
+#pagedeclaration #retour{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#009EE0, #47C9FF);
+    -fx-padding: 3 0 0 0;
+}
+
+#buttonValidate{
+    -fx-padding: 30 0 0 0;
+}
+
+
+/*CSS POP-UP*/
+#okButton,
+#ok_button,
+#new_declaration_button{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#009EE0, #47C9FF);
+    -fx-border-color: #014978;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+}
+
+#title_pop_up{
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #014978 !important;
+    -fx-padding: 0 0 10 0;
+}
+
+#text_pop_up{
+    -fx-padding: 0 0 15 0;
 }
 
 
