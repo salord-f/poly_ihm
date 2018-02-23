@@ -4,7 +4,6 @@ import fr.polytech.ihm.JsonManager;
 import fr.polytech.ihm.model.Incident;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -15,10 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -27,11 +24,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class ViewIncidentController {
-	boolean test = true;
 	private ObservableList<Incident> incidentList = FXCollections.observableArrayList();
-	private ObservableList<Incident> incidentListSearch = FXCollections.observableArrayList();
-	String Text = null;
-
 	private boolean orderedByCat;
 	private boolean orderedByLieu;
 	private boolean orderedByDate;
@@ -42,9 +35,6 @@ public class ViewIncidentController {
 
 	@FXML
 	private Button declarerIncident;
-
-	@FXML
-	private GridPane trierPar;
 
 	@FXML
 	private Button trieUrgence;
@@ -103,7 +93,6 @@ public class ViewIncidentController {
 
 		listeViewIncidents.setItems(sortedData);
 
-
 		this.listeViewIncidents.setCellFactory(
 				new Callback<ListView<Incident>, ListCell<Incident>>() {
 					@Override
@@ -113,20 +102,18 @@ public class ViewIncidentController {
 							protected void updateItem(Incident item, boolean empty) {
 								super.updateItem(item, empty);
 								if (item != null) {
+									try {
+										String fxmlFile = "/fxml/incidents.fxml";
+										FXMLLoader loader = new FXMLLoader();
+										Parent listElement = loader.load(getClass().getResourceAsStream(fxmlFile));
+										((IncidentController) loader.getController()).initialize(item); //TODO
+										// Display content of the fxml file
+										this.setGraphic(listElement);
 
-										try {
-											String fxmlFile = "/fxml/incidents.fxml";
-											FXMLLoader loader = new FXMLLoader();
-											Parent listElement = loader.load(getClass().getResourceAsStream(fxmlFile));
-											((IncidentController) loader.getController()).initialize(item); //TODO
-											// Display content of the fxml file
-											this.setGraphic(listElement);
-
-										} catch (IOException e) {
-											e.printStackTrace();
-										}
+									} catch (IOException e) {
+										e.printStackTrace();
 									}
-								else {
+								} else {
 									this.setGraphic(null);
 									this.setText(null);
 								}
@@ -185,27 +172,15 @@ public class ViewIncidentController {
 				});
 
 		//Found on http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
-		this.rechercherIncident.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(person -> {
-				// If filter text is empty, display all persons.
-				if (newValue == null || newValue.isEmpty()) {
-					return true;
-				}
-
-				// Compare first name and last name of every person with filter text.
-				String lowerCaseFilter = newValue.toLowerCase();
-
-				if (person.getTitle().toLowerCase().contains(lowerCaseFilter)) {
-					return true; // Filter matches first name.
-				} else if (person.getEmail().toLowerCase().contains(lowerCaseFilter)) {
-					return true; // Filter matches last name.
-				}else if (person.getEmailDomain().toLowerCase().contains(lowerCaseFilter)) {
-					return true; // Filter matches last name.
-				}
-
-				return false;
-			});
-		});
+		this.rechercherIncident.textProperty().addListener((observable, oldValue, newValue) -> filteredData.setPredicate(person -> {
+			// If filter text is empty, display all persons.
+			if (newValue == null || newValue.isEmpty()) {
+				return true;
+			}
+			// Compare first name and last name of every person with filter text.
+			String lowCase = newValue.toLowerCase();
+			// Filter matches first name.
+			return person.getTitle().contains(lowCase) || person.getEmail().contains(lowCase) || person.getEmailDomain().contains(lowCase);
+		}));
 	}
-
 }

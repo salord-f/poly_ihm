@@ -15,7 +15,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.Collections;
 
 public class IncidentController {
 	Incident incident;
@@ -99,27 +98,26 @@ public class IncidentController {
 
 		switch (incident.getEmergency()) {
 			case LOW:
-				showImage("images" + File.separator + "green.png", urgenceIcon);
+				showUrgency("images" + File.separator + "green.png", urgenceIcon);
 				break;
 			case MEDIUM:
-				showImage("images" + File.separator + "orange.png", urgenceIcon);
+				showUrgency("images" + File.separator + "orange.png", urgenceIcon);
 				break;
 			case HIGH:
-				showImage("images" + File.separator + "red.png", urgenceIcon);
+				showUrgency("images" + File.separator + "red.png", urgenceIcon);
 				break;
 			default:
 				break;
 		}
 	}
 
-
-	private void showImage(String url, ImageView view) {
+	private void showUrgency(String url, ImageView view) {
 		try {
-			File file = new File(url);
-			Image image = new Image(file.toURI().toString());
+			Image image = new Image(url);
 			view.setImage(image);
+			view.setCache(true);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -141,20 +139,5 @@ public class IncidentController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		/*try {
-			Stage stage2 = (Stage) zoneIncident.getScene().getWindow();
-			Stage stage = new Stage();
-			Parent rootNode = loader.load(getClass().getResourceAsStream("/fxml/missing.fxml"));
-			Scene scene = new Scene(rootNode);
-			scene.getStylesheets().add("/styles/styles.css");
-			stage.setScene(scene);
-			((MissingController) loader.getController()).initialize(cat);
-			stage.initModality(Modality.WINDOW_MODAL);
-			stage.initOwner(stage2);
-			stage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
 	}
 }
