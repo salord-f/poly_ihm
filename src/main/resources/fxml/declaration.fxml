@@ -132,7 +132,7 @@
                               <ToggleGroup fx:id="urgence" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="urgenceFaible" mnemonicParsing="false" selected="true" text="Faible" toggleGroup="$urgence">
+                        <RadioButton fx:id="urgenceFaible" mnemonicParsing="false" text="Faible" toggleGroup="$urgence">
                            <FlowPane.margin>
                               <Insets />
                            </FlowPane.margin>
@@ -140,7 +140,7 @@
                               <Font size="12.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="urgenceMoyenne" mnemonicParsing="false" selected="true" text="Moyenne" toggleGroup="$urgence">
+                        <RadioButton fx:id="urgenceMoyenne" mnemonicParsing="false" text="Moyenne" toggleGroup="$urgence">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -148,7 +148,7 @@
                               <Insets />
                            </FlowPane.margin>
                         </RadioButton>
-                        <RadioButton fx:id="urgenceForte" mnemonicParsing="false" selected="true" text="Forte" toggleGroup="$urgence">
+                        <RadioButton fx:id="urgenceForte" mnemonicParsing="false" text="Forte" toggleGroup="$urgence">
                            <font>
                               <Font size="12.0" />
                            </font>

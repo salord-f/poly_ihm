@@ -289,10 +289,12 @@ public class DeclarationController {
     {
         ObservableList<String> categorieList = FXCollections.observableArrayList();
         for (int i = 0; i < Category.values().length; i++) categorieList.add(Category.values()[i].getName());
+        categorieList.remove("");
         categorie.setItems(categorieList);
 
         ObservableList<String> localizationList = FXCollections.observableArrayList();
         for (int i = 0; i < Location.values().length; i++) localizationList.add(Location.values()[i].getName());
+        localizationList.remove("");
         localization.setItems(localizationList);
 
         ObservableList<String> emaileDomaineList =

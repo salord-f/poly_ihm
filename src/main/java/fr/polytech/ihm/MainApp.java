@@ -31,10 +31,6 @@ public class MainApp extends Application {
 
         stage.setTitle("Poly'Blem");
         stage.setScene(scene);
-        stage.setMinWidth(800);
-        stage.setMaxWidth(800);
-        stage.setMaxHeight(600);
-        stage.setMinHeight(600);
         stage.setResizable(false);
 
         stage.show();
