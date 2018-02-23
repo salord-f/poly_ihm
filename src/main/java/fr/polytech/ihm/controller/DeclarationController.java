@@ -114,17 +114,16 @@ public class DeclarationController {
         fileChooser.setTitle("Choisissez une image");
         File URL = fileChooser.showOpenDialog(join.getScene().getWindow());
 
-        String file = "./";
-
-        Path currentDirectory = new File(file + URL.getName()).toPath();
-
-        try {
-            Files.copy(URL.toPath(),currentDirectory, StandardCopyOption.REPLACE_EXISTING);
+        String file = "." + File.separator;
+        if(URL != null) {
+            Path currentDirectory = new File(file + URL.getName()).toPath();
+            try {
+                Files.copy(URL.toPath(), currentDirectory, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            joinConvert = currentDirectory.toString();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        joinConvert = currentDirectory.toString();
     }
 
     @FXML

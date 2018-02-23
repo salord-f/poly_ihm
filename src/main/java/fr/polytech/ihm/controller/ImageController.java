@@ -15,8 +15,8 @@ public class ImageController {
 	private ImageView imageView;
 
 	@FXML
-	public void initialize(String url){
-		showImage(url, imageView);
+	public void initialize(String url) {
+		showImage(url, this.imageView);
 	}
 
 	private void showImage(String url, ImageView view) {
@@ -26,6 +26,8 @@ public class ImageController {
 			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 			imageView.setImage(image);
 			imageView.setPreserveRatio(true);
+			imageView.setSmooth(true);
+			imageView.setCache(true);
 		} catch (IOException ex) {
 			//Logger.getLogger(JavaFXPixel.class.getName()).log(Level.SEVERE, null, ex);
 		}

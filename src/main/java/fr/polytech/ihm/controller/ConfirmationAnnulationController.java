@@ -27,7 +27,6 @@ public class ConfirmationAnnulationController {
 
 	@FXML
 	public void YesButtonAction(ActionEvent event) { //TODO
-
 		String fxmlFile = "/fxml/viewIncidents.fxml";
 		FXMLLoader loader = new FXMLLoader();
 		try {
@@ -44,27 +43,6 @@ public class ConfirmationAnnulationController {
 			stage2.show();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}/*
-
-		try {
-			Stage stage2 = (Stage) YesButton.getScene().getWindow();
-
-			Stage stage = new Stage();
-
-
-			Parent root = FXMLLoader.load(
-					getClass().getResource("/fxml/viewIncidents.fxml"));
-			Scene s = new Scene(root);
-			stage.setScene(s);
-			s.getStylesheets().add("/styles/styles.css");
-			stage.setTitle("Liste des incidents déclarés");
-
-			stage.initModality(Modality.WINDOW_MODAL);
-			stage.initOwner(stage2);
-			stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
+		}
 	}
-
 }
