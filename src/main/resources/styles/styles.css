@@ -12,8 +12,8 @@
     -fx-font-weight: bold;
     -fx-text-fill: #014978 !important;
     -fx-padding: 5 0 30 0 ;
-
 }
+
 .text-area {
     -fx-border-radius: 18px;
     -fx-text-fill: #014978;
@@ -48,12 +48,16 @@
 
 /*Css incident*/
 
+#incidentBox .label{
+    -fx-font-size: 15px;
+}
+
 .list-cell:filled:selected {
     -fx-background-color: none;
 }
 
 #titreIncident{
-    -fx-font-size: 13px !important;
+    -fx-font-size: 17px !important;
     -fx-text-fill: #014978;
     -fx-font-weight: bold;
 }
@@ -66,11 +70,19 @@
     -fx-text-fill: #009EE0;
 }
 
-#voirDescription{
+#voirDescription, #voirImage{
     -fx-background-color: none;
+    -fx-padding: 0 0 0 0;
+    -fx-text-fill: #47C9FF;
 }
 
-/*CSS déclaration d'une application*/
+#voirDescription:hover, #voirImage:hover{
+    -fx-padding: 0 0 0 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #47C9FF !important;
+}
+
+/*CSS déclaration d'un incident*/
 
 #pagedeclaration #categorie,
 #localization,#emaileDomaine{
@@ -103,11 +115,17 @@
     -fx-padding: 30 0 0 0;
 }
 
+.radio-button{
+    -fx-font-size: 15px;
+}
+
 
 /*CSS POP-UP*/
 #okButton,
 #ok_button,
-#new_declaration_button{
+#new_declaration_button,
+#YesButton,
+#NoButton{
     -fx-text-fill: white;
     -fx-background-color: linear-gradient(#009EE0, #47C9FF);
     -fx-border-color: #014978;

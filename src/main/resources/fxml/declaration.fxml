@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.DeclarationController" fx:id="pagedeclaration">
+<BorderPane fx:id="pagedeclaration" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.DeclarationController">
    <top>
       <Text fx:id="declarationTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Déclaration" textAlignment="CENTER" wrappingWidth="200" BorderPane.alignment="CENTER">
          <font>
@@ -32,29 +32,28 @@
             <Insets bottom="20.0" top="20.0" />
          </BorderPane.margin>
          <center>
-            <GridPane BorderPane.alignment="CENTER">
+            <GridPane prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" percentWidth="35.0" />
-                <ColumnConstraints hgrow="SOMETIMES" percentWidth="65.0" />
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="39.0" />
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="83.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="100.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="63.0" minHeight="40.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="68.0" minHeight="17.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="116.0" minHeight="40.0" prefHeight="87.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="84.0" minHeight="27.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="74.0" minHeight="22.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="68.0" minHeight="26.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="67.0" minHeight="40.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="47.0" minHeight="24.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text fx:id="categorieLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie : " GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <Text fx:id="categorieLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie : " wrappingWidth="117.755859375" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="categorie" prefHeight="27.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                  <ComboBox fx:id="categorie" prefHeight="31.0" prefWidth="416.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -62,17 +61,17 @@
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Text fx:id="titreLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre* : " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text fx:id="titreLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre* : " wrappingWidth="84.830078125" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="titre" maxHeight="24.0" maxWidth="300.0" prefHeight="24.0" prefWidth="300.0" promptText="Entrer un titre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <TextField fx:id="titre" maxHeight="31.0" maxWidth="418.0" prefHeight="31.0" prefWidth="418.0" promptText="Entrer un titre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description : " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description : " wrappingWidth="132.1416015625" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -80,48 +79,48 @@
                         <Insets top="5.0" />
                      </GridPane.margin>
                   </Text>
-                  <TextArea fx:id="description" maxWidth="300.0" prefHeight="200.0" prefWidth="300.0" promptText="Entrer une description du problème (facultatif)" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                  <TextArea fx:id="description" maxWidth="415.0" prefHeight="85.0" prefWidth="415.0" promptText="Entrer une description du problème (facultatif)" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextArea>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image : " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image : " wrappingWidth="95.228515625" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="join" maxHeight="32.0" maxWidth="150.0" minHeight="24.0" minWidth="150.0" mnemonicParsing="false" onAction="#joinAction" prefHeight="32.0" prefWidth="150.0" text="Joindre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="join" maxHeight="32.0" maxWidth="415.0" minHeight="24.0" minWidth="150.0" mnemonicParsing="false" onAction="#joinAction" prefHeight="32.0" prefWidth="415.0" text="Joindre" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation : " GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation : " wrappingWidth="138.962890625" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <FlowPane maxWidth="300.0" prefHeight="200.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <FlowPane alignment="CENTER" maxWidth="419.0" prefHeight="40.0" prefWidth="419.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <children>
-                        <ComboBox fx:id="localization" prefWidth="100.0">
+                        <ComboBox fx:id="localization" prefHeight="31.0" prefWidth="185.0">
                            <FlowPane.margin>
                               <Insets left="5.0" top="5.0" />
                            </FlowPane.margin>
                         </ComboBox>
-                        <TextField fx:id="localizationDetail" prefHeight="27.0" prefWidth="190.0" promptText="ex : pièce, etc.">
+                        <TextField fx:id="localizationDetail" prefHeight="31.0" prefWidth="220.0" promptText="ex : pièce, etc.">
                            <FlowPane.margin>
                               <Insets left="5.0" top="5.0" />
                            </FlowPane.margin>
                         </TextField>
                      </children>
                   </FlowPane>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Urgence : " GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Urgence : " wrappingWidth="112.314453125" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
                   <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                      <children>
-                        <RadioButton fx:id="urgenceAucune" mnemonicParsing="false" selected="true" text="Aucune">
+                        <RadioButton fx:id="urgenceAucune" mnemonicParsing="false" prefHeight="17.0" prefWidth="104.0" selected="true" text="Aucune">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -132,7 +131,7 @@
                               <ToggleGroup fx:id="urgence" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="urgenceFaible" mnemonicParsing="false" text="Faible" toggleGroup="$urgence">
+                        <RadioButton fx:id="urgenceFaible" mnemonicParsing="false" prefHeight="17.0" prefWidth="100.0" text="Faible" toggleGroup="$urgence">
                            <FlowPane.margin>
                               <Insets />
                            </FlowPane.margin>
@@ -140,7 +139,7 @@
                               <Font size="12.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="urgenceMoyenne" mnemonicParsing="false" text="Moyenne" toggleGroup="$urgence">
+                        <RadioButton fx:id="urgenceMoyenne" mnemonicParsing="false" prefHeight="17.0" prefWidth="113.0" text="Moyenne" toggleGroup="$urgence">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -148,7 +147,7 @@
                               <Insets />
                            </FlowPane.margin>
                         </RadioButton>
-                        <RadioButton fx:id="urgenceForte" mnemonicParsing="false" text="Forte" toggleGroup="$urgence">
+                        <RadioButton fx:id="urgenceForte" mnemonicParsing="false" prefHeight="17.0" prefWidth="70.0" text="Forte" toggleGroup="$urgence">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -161,19 +160,19 @@
                         <Insets top="5.0" />
                      </GridPane.margin>
                   </FlowPane>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email* : " GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email* : " wrappingWidth="95.755859375" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                  <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                      <children>
-                        <TextField fx:id="email">
+                        <TextField fx:id="email" prefHeight="31.0" prefWidth="239.0">
                            <FlowPane.margin>
                               <Insets left="5.0" top="5.0" />
                            </FlowPane.margin>
                         </TextField>
-                        <ComboBox fx:id="emaileDomaine" promptText="domaine">
+                        <ComboBox fx:id="emaileDomaine" prefHeight="31.0" prefWidth="170.0" promptText="domaine">
                            <FlowPane.margin>
                               <Insets top="5.0" />
                            </FlowPane.margin>
@@ -181,28 +180,25 @@
                      </children>
                   </FlowPane>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* champs obligatoires." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
-                  <FlowPane fx:id="buttonValidate" hgap="100.0" prefHeight="200.0" prefWidth="200.0"
-                            GridPane.columnIndex="1"
-                            GridPane.rowIndex="8">
-                     <children>
-                        <Button fx:id="envoyer" alignment="TOP_CENTER" maxHeight="35.0" maxWidth="95.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" onAction="#envoyerAction" prefHeight="35.0" prefWidth="95.0" text="Envoyer">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="retour" alignment="TOP_CENTER" maxHeight="35.0" maxWidth="95.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" onAction="#RetourAction" prefHeight="35.0" prefWidth="95.0" text="Retour">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </FlowPane>
                </children>
             </GridPane>
          </center>
       </BorderPane>
    </center>
    <bottom>
-      <FlowPane alignment="TOP_CENTER" hgap="40.0" prefHeight="36.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
+      <FlowPane fx:id="buttonValidate" alignment="TOP_CENTER" hgap="100.0" prefHeight="130.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="envoyer" alignment="CENTER" maxHeight="35.0" maxWidth="152.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" onAction="#envoyerAction" prefHeight="35.0" prefWidth="152.0" text="Envoyer">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="retour" alignment="CENTER" maxHeight="35.0" maxWidth="164.0" minHeight="35.0" minWidth="95.0" mnemonicParsing="false" onAction="#RetourAction" prefHeight="35.0" prefWidth="164.0" text="Retour">
+               <font>
+                  <Font size="18.0" />
+                   </font>
+            </Button>
+         </children>
+      </FlowPane>
    </bottom>
 </BorderPane>

@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="400.0" maxWidth="780.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.IncidentController">
+<VBox maxHeight="400.0" maxWidth="780.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.IncidentController"
+      fx:id="incidentBox">
    <children>
       <GridPane fx:id="infoGlobals">
          <columnConstraints>
