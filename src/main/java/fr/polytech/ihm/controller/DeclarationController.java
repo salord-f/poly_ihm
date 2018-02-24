@@ -310,9 +310,11 @@ public class DeclarationController {
         categorie.getItems().clear();
         description.clear();
         localizationDetail.clear();
-        urgenceForte.setSelected(true);
+        urgenceAucune.setSelected(true);
         email.clear();
+        emaileDomaine.getItems().clear();
         localization.getItems().clear();
+        joinConvert = "";
         initialize();
     }
 
