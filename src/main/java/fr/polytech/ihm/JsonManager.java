@@ -91,26 +91,28 @@ public class JsonManager {
         JSONParser parser = new JSONParser();
         List<Incident> incidents = new ArrayList<>();
 
-        try {
+        if (jsonFile.exists() && !jsonFile.isDirectory()) {
+            try {
 
-            JSONArray list= (JSONArray) parser.parse(new FileReader(jsonFile));
+                JSONArray list= (JSONArray) parser.parse(new FileReader(jsonFile));
 
-            list.forEach((Object obj) -> {
-                JSONObject jsonObject=(JSONObject) obj;
-                incidents.add(new Incident((String)jsonObject.get("Category"),
-                        (String)jsonObject.get("Title"),
-                        (String)jsonObject.get("Description"),
-                        (String)jsonObject.get("Image"),
-                        (String)jsonObject.get("Location"),
-                        (String)jsonObject.get("LocationDetail"),
-                        Integer.parseInt(jsonObject.get("Emergency").toString()),
-                        (String)jsonObject.get("Email"),
-                        (String)jsonObject.get("EmailDomain"),
-                        (String)jsonObject.get("Date")));
-            });
+                list.forEach((Object obj) -> {
+                    JSONObject jsonObject=(JSONObject) obj;
+                    incidents.add(new Incident((String)jsonObject.get("Category"),
+                            (String)jsonObject.get("Title"),
+                            (String)jsonObject.get("Description"),
+                            (String)jsonObject.get("Image"),
+                            (String)jsonObject.get("Location"),
+                            (String)jsonObject.get("LocationDetail"),
+                            Integer.parseInt(jsonObject.get("Emergency").toString()),
+                            (String)jsonObject.get("Email"),
+                            (String)jsonObject.get("EmailDomain"),
+                            (String)jsonObject.get("Date")));
+                });
 
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
+            } catch (ParseException | IOException e) {
+                e.printStackTrace();
+            }
         }
 
         return incidents;

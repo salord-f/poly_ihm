@@ -96,7 +96,7 @@ public class IncidentController {
 		String locationDetail = incident.getLocationDetail();
 		if(locationDetail.equals("")){
 			this.detailLieu2.setText("Pas de détail pour le lieu");
-		}else this.detailLieu2.setText("Lieu détail : " + locationDetail);
+		}else this.detailLieu2.setText("Détails du lieu : " + locationDetail);
 
 		this.email.setText(incident.getEmail() + incident.getEmailDomain());
 
