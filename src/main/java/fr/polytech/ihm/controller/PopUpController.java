@@ -33,6 +33,7 @@ public class PopUpController {
 			Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 			Scene scene = new Scene(rootNode);
 			stage2.setScene(scene);
+            scene.getStylesheets().add("/styles/styles.css");
 			stage.close();
 			stage2.setTitle("Liste des déclarations");
 			stage2.show();
