@@ -36,12 +36,36 @@
     -fx-text-fill: #014978;
 }
 
-#trieUrgence, #trieCat, #trieDate, #trieLieu{
+#trieUrgence,
+#trieCat,
+#trieDate,
+#trieLieu{
     -fx-background-color: none;
     -fx-border-color: #009EE0;
 }
 
-#trieUrgence:hover, #trieCat:hover, #trieDate:hover, #trieLieu:hover{
+#trieUrgence .imageTrie,
+#trieCat .imageTrie,
+#trieDate .imageTrie,
+#trieLieu .imageTrie{
+    -fx-background-size: 18 18;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:right;
+}
+
+
+#trieUrgence:focused #urgenceImageV,
+#trieCat:focused #catImageV,
+#trieDate:focused #dateImageV,
+#trieLieu:focused #lieuImageV {
+    -fx-rotate: 0;
+}
+
+
+#trieUrgence:hover,
+#trieCat:hover,
+#trieDate:hover,
+#trieLieu:hover{
     -fx-background-color: none;
     -fx-border-color: #47C9FF;
 }

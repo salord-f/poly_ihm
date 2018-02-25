@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.ViewIncidentController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.ViewIncidentController">
   <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0">
          <top>
@@ -62,10 +63,22 @@
                      </rowConstraints>
                      <children>
                         <Label fx:id="labelTrierPar" text="Trier par :" />
-                        <Button fx:id="trieUrgence" mnemonicParsing="false" text="Urgence" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="trieDate" mnemonicParsing="false" text="Date" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="trieLieu" mnemonicParsing="false" text="Lieu" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="trieCat" mnemonicParsing="false" text="Catégorie" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button fx:id="trieUrgence" contentDisplay="RIGHT" mnemonicParsing="false" text="Urgence" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                            <graphic>
+                                <ImageView fx:id="urgenceImageV" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
+                            </graphic></Button>
+                        <Button fx:id="trieDate" contentDisplay="RIGHT" mnemonicParsing="false" text="Date" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <graphic>
+                              <ImageView fx:id="dateImageV" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></Button>
+                        <Button fx:id="trieLieu" contentDisplay="RIGHT" mnemonicParsing="false" text="Lieu" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                            <graphic>
+                                <ImageView fx:id="lieuImageV" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
+                            </graphic></Button>
+                        <Button fx:id="trieCat" contentDisplay="RIGHT" mnemonicParsing="false" text="Catégorie" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER"><graphic>
+                            <ImageView fx:id="catImageV" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true"
+                                       preserveRatio="true" />
+                        </graphic></Button>
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" />
