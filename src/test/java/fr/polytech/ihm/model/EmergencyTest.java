@@ -1,4 +1,4 @@
-package model;
+package fr.polytech.ihm.model;
 
 import fr.polytech.ihm.model.Emergency;
 import org.junit.After;
