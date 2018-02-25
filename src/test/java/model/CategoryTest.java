@@ -1,7 +1,6 @@
 package model;
 
 import fr.polytech.ihm.model.Category;
-import org.apache.commons.lang.ObjectUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
