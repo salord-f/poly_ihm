@@ -13,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -27,295 +26,239 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
-
 
 
 public class DeclarationController {
 
-    private static final Logger log = LoggerFactory.getLogger(MainApp.class);
-
-    Incident incident;
-
-    String calendar;
-
-
-    @FXML
-    private Text declarationTitle;
-
-    @FXML
-    private Text categorieLabel;
-
-
-    private String categorieConvert = "";
-    @FXML
-    private ComboBox<String> categorie;
-
-    @FXML
-    private Text titreLabel;
+	private static final Logger log = LoggerFactory.getLogger(MainApp.class);
+	private Incident incident;
+	private String calendar;
+	private String categorieConvert = "";
+	private String titreConvert = "";
+	private String descriptionConvert = "";
+	private String joinConvert = ""; //URL
+	private String localizationConvert = "";
+	private String localizationDetailConvert = "";
+	private int urgenceState;
+	private String emailConvert = "";
+	private String emailDomaineConvert = "";
 
 
-    private String titreConvert = "";
-    @FXML
-    private TextField titre;
+	@FXML
+	private ComboBox<String> categorie;
 
+	@FXML
+	private TextField titre;
 
-    private String descriptionConvert = "";
-    @FXML
-    private TextArea description;
+	@FXML
+	private TextArea description;
 
+	@FXML
+	private Button join;
 
-    private String joinConvert = ""; //URL
-    @FXML
-    private Button join;
+	@FXML
+	private ComboBox<String> localization;
 
-    private String localizationConvert = "";
-    @FXML
-    private ComboBox<String> localization;
+	@FXML
+	private TextField localizationDetail;
 
+	@FXML
+	private RadioButton urgenceAucune;
 
-    private String localizationDetailConvert = "";
-    @FXML
-    private TextField localizationDetail;
+	@FXML
+	private RadioButton urgenceFaible;
 
+	@FXML
+	private RadioButton urgenceMoyenne;
 
-    private int urgenceState;
-    @FXML
-    private RadioButton urgenceAucune;
+	@FXML
+	private RadioButton urgenceForte;
 
-    @FXML
-    private RadioButton urgenceFaible;
+	@FXML
+	private TextField email;
 
-    @FXML
-    private RadioButton urgenceMoyenne;
+	@FXML
+	private ComboBox<String> emailDomaine;
 
-    @FXML
-    private RadioButton urgenceForte;
+	@FXML
+	void joinAction(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Choisissez une image");
+		File URL = fileChooser.showOpenDialog(join.getScene().getWindow());
 
+		String file = "." + File.separator;
+		if (URL != null) {
+			Path currentDirectory = new File(file + URL.getName()).toPath();
+			try {
+				Files.copy(URL.toPath(), currentDirectory, StandardCopyOption.REPLACE_EXISTING);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			joinConvert = currentDirectory.toString();
+		}
+	}
 
-    private String emailConvert = "";
-    @FXML
-    private TextField email;
+	@FXML
+	void RetourAction(ActionEvent event) {
+		retrieveData();
+		if (!categorieConvert.equals("") ||
+				!titreConvert.equals("") ||
+				!descriptionConvert.equals("") ||
+				!joinConvert.equals("") ||
+				!localizationConvert.equals("") ||
+				!emailConvert.equals("") ||
+				!emailDomaineConvert.equals("")) {
+			try {
+				Stage stage = new Stage();
+				Stage stage2 = (Stage) join.getScene().getWindow();
+				Parent root = FXMLLoader.load(
+						getClass().getResource("/fxml/confirmationAnnulation.fxml")); //TODO
+				Scene s = new Scene(root);
+				stage.setScene(s);
+				s.getStylesheets().add("/styles/styles.css");
+				stage.setTitle("Quitter la déclaration");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(stage2);
+				stage.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
+		} else {
+			try {
+				Stage stage = (Stage) join.getScene().getWindow();
 
-    private String emaileDomaineConvert = "";
-    @FXML
-    private ComboBox<String> emaileDomaine;
+				Parent root = FXMLLoader.load(
+						getClass().getResource("/fxml/viewIncidents.fxml"));
+				Scene s = new Scene(root);
+				stage.setScene(s);
+				s.getStylesheets().add("/styles/styles.css");
+				stage.setTitle("Liste des incidents");
+				stage.show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    @FXML
-    private Button envoyer;
+	@FXML
+	void envoyerAction(ActionEvent event) {
 
-    @FXML
-    private Button retour;
+		retrieveData();
 
-    @FXML
-    void joinAction(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choisissez une image");
-        File URL = fileChooser.showOpenDialog(join.getScene().getWindow());
+		if (incident.checkInput()) {
+			this.clear();
+			JsonManager jsonManager = new JsonManager();
+			jsonManager.writeJson(incident);
+			try {
+				Stage stage2 = (Stage) join.getScene().getWindow();
+				Stage stage = new Stage();
+				Parent root = FXMLLoader.load(
+						getClass().getResource("/fxml/popupConfirmation.fxml"));
+				Scene s = new Scene(root);
+				stage.setScene(s);
+				s.getStylesheets().add("/styles/styles.css");
+				stage.setTitle("Confirmation de la déclaration");
 
-        String file = "." + File.separator;
-        if(URL != null) {
-            Path currentDirectory = new File(file + URL.getName()).toPath();
-            try {
-                Files.copy(URL.toPath(), currentDirectory, StandardCopyOption.REPLACE_EXISTING);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            joinConvert = currentDirectory.toString();
-        }
-    }
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(stage2);
+				stage.show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				Stage stage = new Stage();
+				Stage stage2 = (Stage) join.getScene().getWindow();
+				Parent root = FXMLLoader.load(
+						getClass().getResource("/fxml/incorrectDeclaration.fxml"));
+				Scene s = new Scene(root);
+				stage.setScene(s);
+				s.getStylesheets().add("/styles/styles.css");
+				stage.setTitle("Erreur de remplissage");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(stage2);
+				stage.show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    @FXML
-    void RetourAction(ActionEvent event) {
-        retrieveData();
-        if (    !categorieConvert.equals("")||
-                !titreConvert.equals("")||
-                !descriptionConvert.equals("")||
-                !joinConvert.equals("")||
-                !localizationConvert.equals("")||
-                !emailConvert.equals("")||
-                !emaileDomaineConvert.equals(""))
-        {
-            try {
-                Stage stage = new Stage();
+	private void retrieveData() {
+		categorieConvert = categorie.getValue();
+		if (categorieConvert == null) {
+			categorieConvert = "";
+		}
 
-                Stage stage2 = (Stage) join.getScene().getWindow();
+		titreConvert = titre.getText();
+		descriptionConvert = description.getText();
 
-                Parent root = FXMLLoader.load(
-                        getClass().getResource("/fxml/confirmationAnnulation.fxml")); //TODO
-                Scene s = new Scene(root);
-                stage.setScene(s);
-                s.getStylesheets().add("/styles/styles.css");
-                stage.setTitle("Quitter la déclaration");
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(stage2);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+		localizationConvert = localization.getValue();
+		if (localizationConvert == null) {
+			localizationConvert = "";
+		}
 
-        }
-        else
-        {
-            try {
-                Stage stage = (Stage) join.getScene().getWindow();
+		localizationDetailConvert = localizationDetail.getText(); //TODO
 
-                Parent root = FXMLLoader.load(
-                        getClass().getResource("/fxml/viewIncidents.fxml"));
-                Scene s = new Scene(root);
-                stage.setScene(s);
-                s.getStylesheets().add("/styles/styles.css");
-                stage.setTitle("Liste des incidents");
-                stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+		if (urgenceAucune.isSelected()) {
+			urgenceState = 0;
+		} else if (urgenceFaible.isSelected()) {
+			urgenceState = 1;
+		} else if (urgenceMoyenne.isSelected()) {
+			urgenceState = 2;
+		} else if (urgenceForte.isSelected()) {
+			urgenceState = 3;
+		}
 
-    @FXML
-    void envoyerAction(ActionEvent event) {
+		emailConvert = email.getText();
+		emailDomaineConvert = emailDomaine.getValue();
+		if (emailDomaineConvert == null) {
+			emailDomaineConvert = "";
+		}
 
-        retrieveData();
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm yyyy/MM/dd");
+		Calendar cal = Calendar.getInstance();
 
-        if (incident.checkInput())
-        {
-            this.clear();
-            JsonManager jsonManager = new JsonManager();
-            jsonManager.writeJson(incident);
-            try {
-                Stage stage2 = (Stage) join.getScene().getWindow();
+		cal.add(Calendar.DATE, 1);
 
-                Stage stage = new Stage();
+		calendar = dateFormat.format(cal.getTime());
 
+		incident = new Incident(categorieConvert, titreConvert, descriptionConvert, joinConvert, localizationConvert, localizationDetailConvert, urgenceState, emailConvert, emailDomaineConvert, calendar);
+	}
 
-                Parent root = FXMLLoader.load(
-                        getClass().getResource("/fxml/popupConfirmation.fxml"));
-                Scene s = new Scene(root);
-                stage.setScene(s);
-                s.getStylesheets().add("/styles/styles.css");
-                stage.setTitle("Confirmation de la déclaration");
+	@FXML
+	public void initialize() {
+		ObservableList<String> categorieList = FXCollections.observableArrayList();
+		Arrays.stream(Category.values()).map(Category::getName).forEach(categorieList::add);
+		categorieList.remove("");
+		categorie.setItems(categorieList);
 
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(stage2);
-                stage.show();
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-        else {
-            try {
-                Stage stage = new Stage();
+		ObservableList<String> localizationList = FXCollections.observableArrayList();
+		Arrays.stream(Location.values()).map(Location::getName).forEach(localizationList::add);
+		localizationList.remove("");
+		localization.setItems(localizationList);
 
-                Stage stage2 = (Stage) join.getScene().getWindow();
+		ObservableList<String> emaileDomaineList =
+				FXCollections.observableArrayList(
+						"@unice.fr",
+						"@etu.unice.fr"
+				);
+		emailDomaine.setItems(emaileDomaineList);
+	}
 
-                Parent root = FXMLLoader.load(
-                        getClass().getResource("/fxml/incorrectDeclaration.fxml")); //TODO
-                Scene s = new Scene(root);
-                stage.setScene(s);
-                s.getStylesheets().add("/styles/styles.css");
-                stage.setTitle("Erreur de remplissage");
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(stage2);
-                stage.show();
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void retrieveData()
-    {
-        //categorie.getSelectionModel().selectedItemProperty();
-
-        categorieConvert = categorie.getValue();
-        if (categorieConvert == null)
-        {
-            categorieConvert = "";
-        }
-
-        titreConvert = titre.getText();
-        descriptionConvert = description.getText();
-
-        localizationConvert = localization.getValue();
-        if (localizationConvert == null)
-        {
-            localizationConvert = "";
-        }
-
-        localizationDetailConvert = localizationDetail.getText(); //TODO
-
-        if(urgenceAucune.isSelected())
-        {
-            urgenceState = 0;
-        }
-        else if(urgenceFaible.isSelected())
-        {
-            urgenceState = 1;
-        }
-        else if(urgenceMoyenne.isSelected())
-        {
-            urgenceState = 2;
-        }
-        else if(urgenceForte.isSelected())
-        {
-            urgenceState = 3;
-        }
-        emailConvert = email.getText();
-        emaileDomaineConvert = emaileDomaine.getValue();
-        if (emaileDomaineConvert == null)
-        {
-            emaileDomaineConvert = "";
-        }
-
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm yyyy/MM/dd");
-        Calendar cal = Calendar.getInstance();
-
-        cal.add(Calendar.DATE, 1);
-
-        calendar = dateFormat.format(cal.getTime());
-
-        incident = new Incident(categorieConvert,titreConvert,descriptionConvert,joinConvert,localizationConvert, localizationDetailConvert,urgenceState,emailConvert,emaileDomaineConvert, calendar);
-    }
-
-    @FXML
-    public void initialize()
-    {
-        ObservableList<String> categorieList = FXCollections.observableArrayList();
-        for (int i = 0; i < Category.values().length; i++) categorieList.add(Category.values()[i].getName());
-        categorieList.remove("");
-        categorie.setItems(categorieList);
-
-        ObservableList<String> localizationList = FXCollections.observableArrayList();
-        for (int i = 0; i < Location.values().length; i++) localizationList.add(Location.values()[i].getName());
-        localizationList.remove("");
-        localization.setItems(localizationList);
-
-        ObservableList<String> emaileDomaineList =
-                FXCollections.observableArrayList(
-                        "@unice.fr",
-                        "@etu.unice.fr"
-                );
-        emaileDomaine.setItems(emaileDomaineList);
-    }
-
-    public void clear()
-    {
-        titre.clear();
-        categorie.getItems().clear();
-        description.clear();
-        localizationDetail.clear();
-        urgenceAucune.setSelected(true);
-        email.clear();
-        emaileDomaine.getItems().clear();
-        localization.getItems().clear();
-        joinConvert = "";
-        initialize();
-    }
-
+	private void clear() {
+		titre.clear();
+		categorie.getItems().clear();
+		description.clear();
+		localizationDetail.clear();
+		urgenceAucune.setSelected(true);
+		email.clear();
+		emailDomaine.getItems().clear();
+		localization.getItems().clear();
+		joinConvert = "";
+		initialize();
+	}
 }

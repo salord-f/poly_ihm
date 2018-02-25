@@ -85,7 +85,7 @@
 /*CSS déclaration d'un incident*/
 
 #pagedeclaration #categorie,
-#localization,#emaileDomaine{
+#localization,#emailDomaine{
     -fx-background-color: none;
     -fx-border-color: #009EE0;
 }
