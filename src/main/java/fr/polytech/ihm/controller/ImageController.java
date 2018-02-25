@@ -19,22 +19,22 @@ public class ImageController {
         showImage(url, this.imageView);
     }
 
-	/**
-	 * Shows the image linked to the incident
-	 */
-	private void showImage(String url, ImageView view) {
-		try {
-			File file = new File(url);
-			BufferedImage bufferedImage = ImageIO.read(file);
-			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-			imageView.setImage(image);
-			imageView.setPreserveRatio(true);
-			imageView.setSmooth(true);
-			imageView.setCache(true);
-		} catch (IOException ex) {
-			//
-		}
-	}
+    /**
+     * Shows the image linked to the incident
+     */
+    private void showImage(String url, ImageView view) {
+        try {
+            File file = new File(url);
+            BufferedImage bufferedImage = ImageIO.read(file);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView.setImage(image);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
+        } catch (IOException ex) {
+            //
+        }
+    }
 
 
 }
