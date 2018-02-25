@@ -1,4 +1,5 @@
 package fr.polytech.ihm.model;
+
 /**
  * Enum all the location possible for an incident
  */
@@ -18,12 +19,9 @@ public enum Location {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     /**
      * Check if a string exists in the enum Location
+     *
      * @param name string to check
      * @return the location if its found else return false
      */
@@ -35,5 +33,9 @@ public enum Location {
         }
         return null;
 
+    }
+
+    public String getName() {
+        return name;
     }
 }

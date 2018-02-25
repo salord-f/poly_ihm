@@ -4,14 +4,14 @@
     -fx-font-family: 'Open Sans';
     -fx-font-size: 13px;
     -fx-text-fill: #333333;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 0, 0, 0, 1);
 }
 
-#title, #declarationTitle{
+#title, #declarationTitle {
     -fx-font-size: 25px;
     -fx-font-weight: bold;
     -fx-text-fill: #014978 !important;
-    -fx-padding: 5 0 30 0 ;
+    -fx-padding: 5 0 30 0;
 }
 
 .text-area {
@@ -19,18 +19,18 @@
     -fx-text-fill: #014978;
 }
 
-#declarerIncident{
+#declarerIncident {
     -fx-text-fill: white;
     -fx-background-color: linear-gradient(#009EE0, #47C9FF);
 }
 
 /*CSS view incident*/
 
-#trierPar{
-    -fx-padding: 30 0 15 0 ;
+#trierPar {
+    -fx-padding: 30 0 15 0;
 }
 
-#labelTrierPar{
+#labelTrierPar {
     -fx-font-size: 18px !important;
     -fx-font-weight: bold;
     -fx-text-fill: #014978;
@@ -39,7 +39,7 @@
 #trieUrgence,
 #trieCat,
 #trieDate,
-#trieLieu{
+#trieLieu {
     -fx-background-color: none;
     -fx-border-color: #009EE0;
 }
@@ -47,12 +47,11 @@
 #trieUrgence .imageTrie,
 #trieCat .imageTrie,
 #trieDate .imageTrie,
-#trieLieu .imageTrie{
+#trieLieu .imageTrie {
     -fx-background-size: 18 18;
     -fx-background-repeat: no-repeat;
-    -fx-background-position:right;
+    -fx-background-position: right;
 }
-
 
 #trieUrgence:focused #urgenceImageV,
 #trieCat:focused #catImageV,
@@ -61,18 +60,17 @@
     -fx-rotate: 0;
 }
 
-
 #trieUrgence:hover,
 #trieCat:hover,
 #trieDate:hover,
-#trieLieu:hover{
+#trieLieu:hover {
     -fx-background-color: none;
     -fx-border-color: #47C9FF;
 }
 
 /*Css incident*/
 
-#incidentBox .label{
+#incidentBox .label {
     -fx-font-size: 15px;
 }
 
@@ -80,27 +78,27 @@
     -fx-background-color: none;
 }
 
-#titreIncident{
+#titreIncident {
     -fx-font-size: 17px !important;
     -fx-text-fill: #014978;
     -fx-font-weight: bold;
 }
 
-#voirImage{
+#voirImage {
     -fx-background-color: none;
 }
 
-#emailTitle{
+#emailTitle {
     -fx-text-fill: #009EE0;
 }
 
-#voirDescription, #voirImage{
+#voirDescription, #voirImage {
     -fx-background-color: none;
     -fx-padding: 0 0 0 0;
     -fx-text-fill: #47C9FF;
 }
 
-#voirDescription:hover, #voirImage:hover{
+#voirDescription:hover, #voirImage:hover {
     -fx-padding: 0 0 0 0;
     -fx-border-width: 0 0 1 0;
     -fx-border-color: #47C9FF !important;
@@ -109,47 +107,45 @@
 /*CSS déclaration d'un incident*/
 
 #pagedeclaration #categorie,
-#localization,#emailDomaine{
+#localization, #emailDomaine {
     -fx-background-color: none;
     -fx-border-color: #009EE0;
 }
 
-
-#infoGlobals:pressed{
+#infoGlobals:pressed {
     -fx-text-fill: white;
 }
 
 #pagedeclaration #titre,
 #pagedeclaration #description,
 #pagedeclaration #localizationDetail,
-#pagedeclaration #email{
+#pagedeclaration #email {
     -fx-border-color: #009EE0;
     -fx-border-radius: 0 0 0 0;
     -fx-background-radius: 0 0 0 0;
 }
 
 #pagedeclaration #envoyer,
-#pagedeclaration #retour{
+#pagedeclaration #retour {
     -fx-text-fill: white;
     -fx-background-color: linear-gradient(#009EE0, #47C9FF);
     -fx-padding: 3 0 0 0;
 }
 
-#buttonValidate{
+#buttonValidate {
     -fx-padding: 30 0 0 0;
 }
 
-.radio-button{
+.radio-button {
     -fx-font-size: 15px;
 }
-
 
 /*CSS POP-UP*/
 #okButton,
 #ok_button,
 #new_declaration_button,
 #YesButton,
-#NoButton{
+#NoButton {
     -fx-text-fill: white;
     -fx-background-color: linear-gradient(#009EE0, #47C9FF);
     -fx-border-color: #014978;
@@ -157,20 +153,18 @@
     -fx-background-radius: 0 0 0 0;
 }
 
-#title_pop_up{
+#title_pop_up {
     -fx-font-size: 25px;
     -fx-font-weight: bold;
     -fx-text-fill: #014978 !important;
     -fx-padding: 0 0 10 0;
 }
 
-#text_pop_up{
+#text_pop_up {
     -fx-padding: 0 0 15 0;
 }
 
-
 /* Component specific styles */
-
 
 .main-panel {
     -fx-background-image: url("../images/background.jpg");
@@ -179,6 +173,6 @@
 .hello-message {
     -fx-text-fill: #AA0000;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 0, 0, 0, 1);
 }
 

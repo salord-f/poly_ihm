@@ -11,27 +11,27 @@ import java.io.File;
 import java.io.IOException;
 
 public class ImageController {
-	@FXML
-	private ImageView imageView;
+    @FXML
+    private ImageView imageView;
 
-	@FXML
-	public void initialize(String url) {
-		showImage(url, this.imageView);
-	}
+    @FXML
+    public void initialize(String url) {
+        showImage(url, this.imageView);
+    }
 
-	private void showImage(String url, ImageView view) {
-		try {
-			File file = new File(url);
-			BufferedImage bufferedImage = ImageIO.read(file);
-			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-			imageView.setImage(image);
-			imageView.setPreserveRatio(true);
-			imageView.setSmooth(true);
-			imageView.setCache(true);
-		} catch (IOException ex) {
-			//
-		}
-	}
+    private void showImage(String url, ImageView view) {
+        try {
+            File file = new File(url);
+            BufferedImage bufferedImage = ImageIO.read(file);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView.setImage(image);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
+        } catch (IOException ex) {
+            //
+        }
+    }
 
 
 }

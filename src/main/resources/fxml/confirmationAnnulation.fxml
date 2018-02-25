@@ -5,21 +5,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.ConfirmationAnnulationController">
-   <children>
-      <Label text="Êtes-vous sur de vouloir quitter?" />
-      <HBox alignment="CENTER" spacing="30.0">
-         <children>
-            <Button fx:id="YesButton" mnemonicParsing="false" onAction="#YesButtonAction" text="Oui" />
-            <Button fx:id="NoButton" mnemonicParsing="false" onAction="#NoButtonAction" text="Non" />
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </HBox>
-   </children>
-   <padding>
-      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-   </padding>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity"
+      minWidth="-Infinity" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.121"
+      fx:controller="fr.polytech.ihm.controller.ConfirmationAnnulationController">
+    <children>
+        <Label text="Êtes-vous sur de vouloir quitter?"/>
+        <HBox alignment="CENTER" spacing="30.0">
+            <children>
+                <Button fx:id="YesButton" mnemonicParsing="false" onAction="#YesButtonAction" text="Oui"/>
+                <Button fx:id="NoButton" mnemonicParsing="false" onAction="#NoButtonAction" text="Non"/>
+            </children>
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+    </padding>
 </VBox>

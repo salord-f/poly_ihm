@@ -17,6 +17,7 @@ public class Incident {
 
     /**
      * Create an incident
+     *
      * @param category
      * @param title
      * @param description
@@ -83,6 +84,7 @@ public class Incident {
 
     /**
      * Check the important input
+     *
      * @return true if all the important input are not null else return false
      */
     public boolean checkInput() {

@@ -1,87 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-
-<VBox fx:id="incidentBox" maxHeight="400.0" maxWidth="780.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.IncidentController">
-   <children>
-      <GridPane fx:id="infoGlobals">
-         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label fx:id="date" contentDisplay="CENTER" text="15/01/2018" GridPane.columnIndex="2" />
-            <Label fx:id="categorie" contentDisplay="CENTER" text="Voiture" GridPane.columnIndex="4" />
-            <ImageView fx:id="urgenceIcon" fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fx:id="lieuIcon" fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
-            <Label fx:id="detailLieu" prefHeight="34.0" text="Detail Lieu" GridPane.columnIndex="3" />
-         </children>
-      </GridPane>
-      <HBox>
-         <children>
-            <GridPane prefWidth="780.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label fx:id="titreIncident" contentDisplay="CENTER" prefHeight="34.0" prefWidth="406.0" text="Titre de l'incident">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Label>
-                  <Button fx:id="voirDescription" contentDisplay="CENTER" text="Voir la description" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin>
-                  </Button>
-               </children>
-            </GridPane>
-         </children>
-      </HBox>
-      <GridPane fx:id="infoSupp" maxWidth="780.0" minWidth="780.0" prefHeight="64.0" prefWidth="780.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="615.0" minWidth="530.0" prefWidth="607.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="163.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button fx:id="voirImage" mnemonicParsing="false" onMouseClicked="#openImage" text="Voir l'image" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label fx:id="description" prefHeight="34.0" prefWidth="603.0" text="Description Incident" />
-                  <Label fx:id="detailLieu2" prefHeight="34.0" prefWidth="603.0" text="Detail lieu" />
-               </children>
-            </VBox>
-         </children>
-      </GridPane>
-      <HBox fx:id="emailBox">
-         <children>
-            <Label fx:id="emailTitle" contentDisplay="CENTER" prefHeight="30.0" prefWidth="45.0" text="Email :" />
-            <Label fx:id="email" prefHeight="30.0" prefWidth="239.0" text="marie.joie@unice.fr" />
-         </children>
-      </HBox>
-   </children>
-   <padding>
-      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-   </padding>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="incidentBox" maxHeight="400.0" maxWidth="780.0" minHeight="-Infinity"
+      minWidth="-Infinity" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141"
+      fx:controller="fr.polytech.ihm.controller.IncidentController">
+    <children>
+        <GridPane fx:id="infoGlobals">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Label fx:id="date" contentDisplay="CENTER" text="15/01/2018" GridPane.columnIndex="2"/>
+                <Label fx:id="categorie" contentDisplay="CENTER" text="Voiture" GridPane.columnIndex="4"/>
+                <ImageView fx:id="urgenceIcon" fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true"
+                           GridPane.columnIndex="1"/>
+                <ImageView fx:id="lieuIcon" fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true"
+                           GridPane.columnIndex="3"/>
+                <Label fx:id="detailLieu" prefHeight="34.0" text="Detail Lieu" GridPane.columnIndex="3"/>
+            </children>
+        </GridPane>
+        <HBox>
+            <children>
+                <GridPane prefWidth="780.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Label fx:id="titreIncident" contentDisplay="CENTER" prefHeight="34.0" prefWidth="406.0"
+                               text="Titre de l'incident">
+                            <GridPane.margin>
+                                <Insets/>
+                            </GridPane.margin>
+                        </Label>
+                        <Button fx:id="voirDescription" contentDisplay="CENTER" text="Voir la description"
+                                textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                            <GridPane.margin>
+                                <Insets right="10.0"/>
+                            </GridPane.margin>
+                        </Button>
+                    </children>
+                </GridPane>
+            </children>
+        </HBox>
+        <GridPane fx:id="infoSupp" maxWidth="780.0" minWidth="780.0" prefHeight="64.0" prefWidth="780.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="615.0" minWidth="530.0" prefWidth="607.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="163.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Button fx:id="voirImage" mnemonicParsing="false" onMouseClicked="#openImage" text="Voir l'image"
+                        GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label fx:id="description" prefHeight="34.0" prefWidth="603.0" text="Description Incident"/>
+                        <Label fx:id="detailLieu2" prefHeight="34.0" prefWidth="603.0" text="Detail lieu"/>
+                    </children>
+                </VBox>
+            </children>
+        </GridPane>
+        <HBox fx:id="emailBox">
+            <children>
+                <Label fx:id="emailTitle" contentDisplay="CENTER" prefHeight="30.0" prefWidth="45.0" text="Email :"/>
+                <Label fx:id="email" prefHeight="30.0" prefWidth="239.0" text="marie.joie@unice.fr"/>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+    </padding>
 </VBox>

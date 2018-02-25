@@ -6,23 +6,32 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="264.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.polytech.ihm.controller.PopUpController">
-   <children>
-      <Label fx:id="title_pop_up" text="Déclaration envoyée">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="text_pop_up" text="Votre déclaration d'incident a bien été envoyée. Vous allez être redirigé(e) vers la page d'incidents. Merci pour votre participation" textAlignment="CENTER" wrapText="true" />
-      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="264.0">
-         <children>
-            <Button fx:id="ok_button" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#ok_button_clicked" text="Ok" HBox.hgrow="ALWAYS" />
-            <Button fx:id="new_declaration_button" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#new_declaration_button_clicked" text="Nouvelle déclaration" HBox.hgrow="ALWAYS" />
-         </children>
-      </HBox>
-   </children>
-   <padding>
-      <Insets left="8.0" right="8.0" top="5.0" />
-   </padding>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity"
+      minWidth="-Infinity" prefWidth="264.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.121"
+      fx:controller="fr.polytech.ihm.controller.PopUpController">
+    <children>
+        <Label fx:id="title_pop_up" text="Déclaration envoyée">
+            <font>
+                <Font name="System Bold" size="19.0"/>
+            </font>
+        </Label>
+        <Label fx:id="text_pop_up"
+               text="Votre déclaration d'incident a bien été envoyée. Vous allez être redirigé(e) vers la page d'incidents. Merci pour votre participation"
+               textAlignment="CENTER" wrapText="true"/>
+        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+              minWidth="-Infinity" prefHeight="34.0" prefWidth="264.0">
+            <children>
+                <Button fx:id="ok_button" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" onMouseClicked="#ok_button_clicked" text="Ok" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="new_declaration_button" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        onMouseClicked="#new_declaration_button_clicked" text="Nouvelle déclaration"
+                        HBox.hgrow="ALWAYS"/>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets left="8.0" right="8.0" top="5.0"/>
+    </padding>
 </VBox>

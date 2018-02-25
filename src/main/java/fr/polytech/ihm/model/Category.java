@@ -17,12 +17,9 @@ public enum Category {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     /**
      * Check if a string exists in the enum Category
+     *
      * @param name string to check
      * @return the category if its found else return false
      */
@@ -34,5 +31,9 @@ public enum Category {
         }
         return null;
 
+    }
+
+    public String getName() {
+        return name;
     }
 }
