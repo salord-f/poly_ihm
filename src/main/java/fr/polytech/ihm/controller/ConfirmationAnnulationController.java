@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,12 +20,12 @@ public class ConfirmationAnnulationController {
 
 	@FXML
 	public void NoButtonAction(ActionEvent event) {
-		Stage stage = (Stage) YesButton.getScene().getWindow();
+		Stage stage = (Stage) NoButton.getScene().getWindow();
 		stage.close();
 	}
 
 	@FXML
-	public void YesButtonAction(ActionEvent event) { //TODO
+	public void YesButtonAction(ActionEvent event) {
 		String fxmlFile = "/fxml/viewIncidents.fxml";
 		FXMLLoader loader = new FXMLLoader();
 		try {
