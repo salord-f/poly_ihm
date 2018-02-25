@@ -22,7 +22,6 @@ import java.io.File;
 public class IncidentController {
     private Incident incident;
     private VoirDescriptionTransition t;
-    private FadeTransition fade;
 
     @FXML
     private Label date;
