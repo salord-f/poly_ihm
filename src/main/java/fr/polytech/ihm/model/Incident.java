@@ -1,5 +1,8 @@
 package fr.polytech.ihm.model;
 
+/**
+ * Model of the incident
+ */
 public class Incident {
     private Category category;
     private String title;
@@ -12,6 +15,19 @@ public class Incident {
     private String emailDomain;
     private String date;
 
+    /**
+     * Create an incident
+     * @param category
+     * @param title
+     * @param description
+     * @param image
+     * @param location
+     * @param locationDetail
+     * @param emergency
+     * @param email
+     * @param emailDomain
+     * @param date
+     */
     public Incident(String category, String title, String description, String image, String location, String locationDetail, int emergency, String email, String emailDomain, String date) {
         this.category = Category.find(category);
         this.title = title;
@@ -65,6 +81,10 @@ public class Incident {
         return locationDetail;
     }
 
+    /**
+     * Check the important input
+     * @return true if all the important input are not null else return false
+     */
     public boolean checkInput() {
         return !getTitle().equals("") && !getEmailDomain().equals("") && !getEmail().equals("");
     }

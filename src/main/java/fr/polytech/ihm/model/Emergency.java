@@ -1,5 +1,9 @@
 package fr.polytech.ihm.model;
 
+
+/**
+ * Enum all the level of emergency
+ */
 public enum Emergency {
 
     NONE("Aucune"),

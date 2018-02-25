@@ -1,5 +1,8 @@
 package fr.polytech.ihm.model;
 
+/**
+ * Enum all the category of incident
+ */
 public enum Category {
 
     DYSFUNCTION("Dysfonctionnement"),
@@ -18,6 +21,11 @@ public enum Category {
         return name;
     }
 
+    /**
+     * Check if a string exists in the enum Category
+     * @param name string to check
+     * @return the category if its found else return false
+     */
     public static Category find(String name) {
         Category[] values = Category.values();
         for (Category i : values) {

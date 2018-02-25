@@ -1,5 +1,7 @@
 package fr.polytech.ihm.model;
-
+/**
+ * Enum all the location possible for an incident
+ */
 public enum Location {
 
     PARKING("Parking"),
@@ -20,6 +22,11 @@ public enum Location {
         return name;
     }
 
+    /**
+     * Check if a string exists in the enum Location
+     * @param name string to check
+     * @return the location if its found else return false
+     */
     public static Location find(String name) {
         Location[] values = Location.values();
         for (Location i : values) {
