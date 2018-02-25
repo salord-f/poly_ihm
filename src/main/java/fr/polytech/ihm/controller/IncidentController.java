@@ -1,6 +1,10 @@
 package fr.polytech.ihm.controller;
 
+import fr.polytech.ihm.VoirDescriptionTransition;
 import fr.polytech.ihm.model.Incident;
+import javafx.animation.FadeTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,8 +15,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.transform.Translate;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 
@@ -56,15 +64,31 @@ public class IncidentController {
 	private Button voirImage;
 
 	@FXML
+	private VBox incidentBox;
+
+	@FXML
+			private HBox emailBox;
+
+	VoirDescriptionTransition t;
+	FadeTransition fade;
+
+	@FXML
 	public void initialize(Incident incident) {
 		//urgenceIcon.setImage(orange);
 		this.incident = incident;
 		fill(this.incident);
-		infoSupp.setManaged(!infoSupp.isManaged());
-		infoSupp.setVisible(!infoSupp.isVisible());
+
+		t=new VoirDescriptionTransition(Duration.millis(500),infoSupp);
+		t.setOnFinished(event -> {if(infoSupp.getPrefHeight()!=0)infoSupp.setVisible(true);}  );
+
+		infoSupp.setVisible(false);
+		infoSupp.setPrefHeight(0);
+
 		voirDescription.setOnAction(event -> {
-			infoSupp.setManaged(!infoSupp.isManaged());
-			infoSupp.setVisible(!infoSupp.isVisible());
+			if(infoSupp.getPrefHeight()!=0)
+				infoSupp.setVisible(false);
+				t.setUp();
+				t.play();
 		});
 
 		this.voirImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
