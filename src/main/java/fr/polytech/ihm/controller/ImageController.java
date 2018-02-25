@@ -29,7 +29,7 @@ public class ImageController {
 			imageView.setSmooth(true);
 			imageView.setCache(true);
 		} catch (IOException ex) {
-			//Logger.getLogger(JavaFXPixel.class.getName()).log(Level.SEVERE, null, ex);
+			//
 		}
 	}
 

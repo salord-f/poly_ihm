@@ -3,8 +3,6 @@ package fr.polytech.ihm.controller;
 import fr.polytech.ihm.VoirDescriptionTransition;
 import fr.polytech.ihm.model.Incident;
 import javafx.animation.FadeTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,9 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.transform.Translate;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -25,7 +20,9 @@ import javafx.util.Duration;
 import java.io.File;
 
 public class IncidentController {
-	Incident incident;
+	private Incident incident;
+	private VoirDescriptionTransition t;
+	private FadeTransition fade;
 
 	@FXML
 	private Label date;
@@ -64,31 +61,23 @@ public class IncidentController {
 	private Button voirImage;
 
 	@FXML
-	private VBox incidentBox;
-
-	@FXML
-			private HBox emailBox;
-
-	VoirDescriptionTransition t;
-	FadeTransition fade;
-
-	@FXML
 	public void initialize(Incident incident) {
-		//urgenceIcon.setImage(orange);
 		this.incident = incident;
 		fill(this.incident);
 
-		t=new VoirDescriptionTransition(Duration.millis(500),infoSupp);
-		t.setOnFinished(event -> {if(infoSupp.getPrefHeight()!=0)infoSupp.setVisible(true);}  );
+		t = new VoirDescriptionTransition(Duration.millis(500), infoSupp);
+		t.setOnFinished(event -> {
+			if (infoSupp.getPrefHeight() != 0) infoSupp.setVisible(true);
+		});
 
 		infoSupp.setVisible(false);
 		infoSupp.setPrefHeight(0);
 
 		voirDescription.setOnAction(event -> {
-			if(infoSupp.getPrefHeight()!=0)
+			if (infoSupp.getPrefHeight() != 0)
 				infoSupp.setVisible(false);
-				t.setUp();
-				t.play();
+			t.setUp();
+			t.play();
 		});
 
 		this.voirImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
@@ -118,16 +107,14 @@ public class IncidentController {
 
 
 		String locationDetail = incident.getLocationDetail();
-		if(locationDetail.equals("")){
+		if (locationDetail.equals("")) {
 			this.detailLieu2.setText("Pas de détail pour le lieu");
-		}else this.detailLieu2.setText("Détails du lieu : " + locationDetail);
+		} else this.detailLieu2.setText("Détails du lieu : " + locationDetail);
 
 		this.email.setText(incident.getEmail() + incident.getEmailDomain());
 
 		String image = incident.getImage();
-		if (image.equals("")) {
-			voirImage.setVisible(false);
-		}
+		if (image.equals("")) voirImage.setVisible(false);
 
 		switch (incident.getEmergency()) {
 			case LOW:

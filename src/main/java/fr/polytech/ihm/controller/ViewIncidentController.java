@@ -2,6 +2,7 @@ package fr.polytech.ihm.controller;
 
 import fr.polytech.ihm.JsonManager;
 import fr.polytech.ihm.model.Incident;
+import fr.polytech.ihm.model.Location;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -54,8 +55,6 @@ public class ViewIncidentController {
 	private Comparator<Incident> comparatorIncident_byLieu = Comparator.comparing(incident -> incident.getLocation().getName());
 	private Comparator<Incident> comparatorIncident_byDate = Comparator.comparing(Incident::getDate);
 	private Comparator<Incident> comparatorIncident_byUrgence = Comparator.comparingInt(incident -> incident.getEmergency().ordinal());
-	private Comparator<Incident> comparatorIncident_byCara = Comparator.comparing(incident -> incident.getTitle());
-
 
 	@FXML
 	void openNewDeclaration(MouseEvent event) {
@@ -72,10 +71,6 @@ public class ViewIncidentController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	@FXML
-	void search(KeyEvent event) {
 	}
 
 	@FXML
@@ -172,15 +167,13 @@ public class ViewIncidentController {
 				});
 
 		//Found on http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
-		this.rechercherIncident.textProperty().addListener((observable, oldValue, newValue) -> filteredData.setPredicate(person -> {
+		this.rechercherIncident.textProperty().addListener((observable, oldValue, newValue) -> filteredData.setPredicate(incident -> {
 			// If filter text is empty, display all persons.
 			if (newValue == null || newValue.isEmpty()) {
 				return true;
 			}
-			// Compare first name and last name of every person with filter text.
 			String lowCase = newValue.toLowerCase();
-			// Filter matches first name.
-			return person.getTitle().contains(lowCase) || person.getEmail().contains(lowCase) || person.getEmailDomain().contains(lowCase);
+			return incident.getTitle().contains(lowCase) || incident.getEmail().contains(lowCase) || incident.getEmailDomain().contains(lowCase);
 		}));
 	}
 }
