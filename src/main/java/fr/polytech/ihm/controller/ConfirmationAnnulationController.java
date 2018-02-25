@@ -18,18 +18,24 @@ public class ConfirmationAnnulationController {
     @FXML
     private Button NoButton;
 
-    @FXML
-    public void NoButtonAction(ActionEvent event) {
-        Stage stage = (Stage) NoButton.getScene().getWindow();
-        stage.close();
-    }
+	/**
+	 * Pressing the "No" button resumes the incident declaration
+	 */
+	@FXML
+	public void NoButtonAction(ActionEvent event) {
+		Stage stage = (Stage) NoButton.getScene().getWindow();
+		stage.close();
+	}
 
-    @FXML
-    public void YesButtonAction(ActionEvent event) {
-        String fxmlFile = "/fxml/viewIncidents.fxml";
-        FXMLLoader loader = new FXMLLoader();
-        try {
-            Stage stage = (Stage) YesButton.getScene().getWindow();
+	/**
+	 * Pressing the "Yes" button sends the user back to the incident view
+	 */
+	@FXML
+	public void YesButtonAction(ActionEvent event) {
+		String fxmlFile = "/fxml/viewIncidents.fxml";
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			Stage stage = (Stage) YesButton.getScene().getWindow();
 
             Stage stage2 = (Stage) stage.getOwner();
 

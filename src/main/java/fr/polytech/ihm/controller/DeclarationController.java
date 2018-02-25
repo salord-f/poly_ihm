@@ -82,11 +82,16 @@ public class DeclarationController {
     @FXML
     private ComboBox<String> emailDomaine;
 
-    @FXML
-    void joinAction(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choisissez une image");
-        File URL = fileChooser.showOpenDialog(join.getScene().getWindow());
+	/**
+	 * This method is called when the button
+	 * "Join" is pressed. It opens the OS file chooser
+	 * and enable the user to link an image to the incident
+	 */
+	@FXML
+	void joinAction(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Choisissez une image");
+		File URL = fileChooser.showOpenDialog(join.getScene().getWindow());
 
         String file = "." + File.separator;
         if (URL != null) {
@@ -100,31 +105,39 @@ public class DeclarationController {
         }
     }
 
-    @FXML
-    void RetourAction(ActionEvent event) {
-        retrieveData();
-        if (!categorieConvert.equals("") ||
-                !titreConvert.equals("") ||
-                !descriptionConvert.equals("") ||
-                !joinConvert.equals("") ||
-                !localizationConvert.equals("") ||
-                !emailConvert.equals("") ||
-                !emailDomaineConvert.equals("")) {
-            try {
-                Stage stage = new Stage();
-                Stage stage2 = (Stage) join.getScene().getWindow();
-                Parent root = FXMLLoader.load(
-                        getClass().getResource("/fxml/confirmationAnnulation.fxml")); //TODO
-                Scene s = new Scene(root);
-                stage.setScene(s);
-                s.getStylesheets().add("/styles/styles.css");
-                stage.setTitle("Quitter la déclaration");
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(stage2);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+	/**
+	 * If the user hasn't put any information in
+	 * any dialog, and presses the "Return" button,
+	 * the user is sent back to the visualization page.
+	 * If the user has entered anything, he is prompted
+	 * a confirmaton window to unsure the user really wanted
+	 * to quit declaring an incident.
+	 */
+	@FXML
+	void RetourAction(ActionEvent event) {
+		retrieveData();
+		if (!categorieConvert.equals("") ||
+				!titreConvert.equals("") ||
+				!descriptionConvert.equals("") ||
+				!joinConvert.equals("") ||
+				!localizationConvert.equals("") ||
+				!emailConvert.equals("") ||
+				!emailDomaineConvert.equals("")) {
+			try {
+				Stage stage = new Stage();
+				Stage stage2 = (Stage) join.getScene().getWindow();
+				Parent root = FXMLLoader.load(
+						getClass().getResource("/fxml/confirmationAnnulation.fxml")); //TODO
+				Scene s = new Scene(root);
+				stage.setScene(s);
+				s.getStylesheets().add("/styles/styles.css");
+				stage.setTitle("Quitter la déclaration");
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(stage2);
+				stage.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
         } else {
             try {
@@ -143,8 +156,13 @@ public class DeclarationController {
         }
     }
 
-    @FXML
-    void envoyerAction(ActionEvent event) {
+	/**
+	 * When the button "Send" is pressed, it opens a popup
+	 * to either confirm the declaration was successful
+	 * or inform the user he missed some required information.
+	 */
+	@FXML
+	void envoyerAction(ActionEvent event) {
 
         retrieveData();
 
@@ -187,11 +205,14 @@ public class DeclarationController {
         }
     }
 
-    private void retrieveData() {
-        categorieConvert = categorie.getValue();
-        if (categorieConvert == null) {
-            categorieConvert = "";
-        }
+	/**
+	 * This method creates a new incident when the "Send" button is pressed
+	 */
+	private void retrieveData() {
+		categorieConvert = categorie.getValue();
+		if (categorieConvert == null) {
+			categorieConvert = "";
+		}
 
         titreConvert = titre.getText();
         descriptionConvert = description.getText();
@@ -229,12 +250,15 @@ public class DeclarationController {
         incident = new Incident(categorieConvert, titreConvert, descriptionConvert, joinConvert, localizationConvert, localizationDetailConvert, urgenceState, emailConvert, emailDomaineConvert, calendar);
     }
 
-    @FXML
-    public void initialize() {
-        ObservableList<String> categorieList = FXCollections.observableArrayList();
-        Arrays.stream(Category.values()).map(Category::getName).forEach(categorieList::add);
-        categorieList.remove("");
-        categorie.setItems(categorieList);
+	/**
+	 * This method initializes the declaration drop-down menus.
+	 */
+	@FXML
+	public void initialize() {
+		ObservableList<String> categorieList = FXCollections.observableArrayList();
+		Arrays.stream(Category.values()).map(Category::getName).forEach(categorieList::add);
+		categorieList.remove("");
+		categorie.setItems(categorieList);
 
         ObservableList<String> localizationList = FXCollections.observableArrayList();
         Arrays.stream(Location.values()).map(Location::getName).forEach(localizationList::add);
@@ -249,16 +273,19 @@ public class DeclarationController {
         emailDomaine.setItems(emaileDomaineList);
     }
 
-    private void clear() {
-        titre.clear();
-        categorie.getItems().clear();
-        description.clear();
-        localizationDetail.clear();
-        urgenceAucune.setSelected(true);
-        email.clear();
-        emailDomaine.getItems().clear();
-        localization.getItems().clear();
-        joinConvert = "";
-        initialize();
-    }
+	/**
+	 * This method clears every fields of this object
+	 */
+	private void clear() {
+		titre.clear();
+		categorie.getItems().clear();
+		description.clear();
+		localizationDetail.clear();
+		urgenceAucune.setSelected(true);
+		email.clear();
+		emailDomaine.getItems().clear();
+		localization.getItems().clear();
+		joinConvert = "";
+		initialize();
+	}
 }

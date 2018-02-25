@@ -10,6 +10,9 @@ public class IncorrectDeclarationController {
     @FXML
     private Button okButton;
 
+    /**
+     * Closes the incorrect declaration window.
+     */
     @FXML
     void okAction(ActionEvent event) {
         Stage stage = (Stage) okButton.getScene().getWindow();

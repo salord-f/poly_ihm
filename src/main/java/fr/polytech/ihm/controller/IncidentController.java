@@ -60,10 +60,14 @@ public class IncidentController {
     @FXML
     private Button voirImage;
 
-    @FXML
-    public void initialize(Incident incident) {
-        this.incident = incident;
-        fill(this.incident);
+	/**
+	 * Initializes the animation for "Voir description"
+	 * and fills the incident passed as parameter
+	 */
+	@FXML
+	public void initialize(Incident incident) {
+		this.incident = incident;
+		fill(this.incident);
 
         t = new VoirDescriptionTransition(Duration.millis(500), infoSupp);
         t.setOnFinished(event -> {
@@ -84,8 +88,11 @@ public class IncidentController {
                 e -> openImage());
     }
 
-    private void fill(Incident incident) {
-        this.date.setText(incident.getDate());
+	/**
+	 * Fills the incident with the correct informations
+	 */
+	private void fill(Incident incident) {
+		this.date.setText(incident.getDate());
 
         String category = incident.getCategory().getName();
         if (category.equals("")) {
@@ -131,33 +138,40 @@ public class IncidentController {
         }
     }
 
-    private void showUrgency(String url, ImageView view) {
-        try {
-            Image image = new Image(url);
-            view.setImage(image);
-            view.setCache(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	/**
+	 * Enable the urgency images to showup
+	 */
+	private void showUrgency(String url, ImageView view) {
+		try {
+			Image image = new Image(url);
+			view.setImage(image);
+			view.setCache(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-    @FXML
-    void openImage() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            Stage stage = new Stage();
-            Stage stage2 = (Stage) voirImage.getScene().getWindow();
-            Parent root = loader.load(getClass().getResourceAsStream("/fxml/image.fxml")); //TODO
-            Scene s = new Scene(root);
-            stage.setScene(s);
-            s.getStylesheets().add("/styles/styles.css");
-            stage.setTitle("Image");
-            ((ImageController) loader.getController()).initialize(incident.getImage());
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(stage2);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	/**
+	 * Opens a new window showing the image corresponding
+	 * to the incident image.
+	 */
+	@FXML
+	void openImage() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			Stage stage = new Stage();
+			Stage stage2 = (Stage) voirImage.getScene().getWindow();
+			Parent root = loader.load(getClass().getResourceAsStream("/fxml/image.fxml")); //TODO
+			Scene s = new Scene(root);
+			stage.setScene(s);
+			s.getStylesheets().add("/styles/styles.css");
+			stage.setTitle("Image");
+			((ImageController) loader.getController()).initialize(incident.getImage());
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.initOwner(stage2);
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
