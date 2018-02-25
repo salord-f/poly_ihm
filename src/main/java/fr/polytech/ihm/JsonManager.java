@@ -10,6 +10,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class manage all the interaction with the JsonFile
+ */
 public class JsonManager {
 
     private File jsonFile;
@@ -19,6 +22,10 @@ public class JsonManager {
         jsonFile = new File("./jsonFile.json");
     }
 
+    /**
+     * Verify if we need to create or modify a JsonFile and call the right method
+     * @param incident The Incident object to add
+     */
     public void writeJson(Incident incident)
     {
         if(jsonFile.exists() && !jsonFile.isDirectory()) {
@@ -30,6 +37,10 @@ public class JsonManager {
         }
     }
 
+    /**
+     * Add the incident into the JsonFile
+     * @param incident The Incident object
+     */
     void modifyJson(Incident incident)
     {
         JSONParser parser = new JSONParser();
@@ -55,6 +66,10 @@ public class JsonManager {
 
     }
 
+    /**
+     * Create a new JsonFile with the incident
+     * @param incident A Incident object
+     */
     void createJson(Incident incident)
     {
         JSONArray list = new JSONArray();
@@ -69,6 +84,11 @@ public class JsonManager {
         }
     }
 
+    /**
+     * Create a JsonObject with all the parameters of the object Incident
+     * @param incident The Incident object
+     * @return The new JsonObject
+     */
     private JSONObject getParameters(Incident incident)
     {
         JSONObject obj = new JSONObject();
@@ -86,6 +106,10 @@ public class JsonManager {
         return obj;
     }
 
+    /**
+     * Get all the incident of the JsonFile
+     * @return The list of Incident object
+     */
     public List<Incident> getIncidents() {
 
         JSONParser parser = new JSONParser();
@@ -114,9 +138,6 @@ public class JsonManager {
                 e.printStackTrace();
             }
         }
-
         return incidents;
     }
-
-
 }
