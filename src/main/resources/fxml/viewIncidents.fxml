@@ -38,7 +38,7 @@
                         <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="rechercherIncident" onKeyPressed="#search" promptText="Rechercher" GridPane.rowIndex="1">
+                        <TextField fx:id="rechercherIncident" promptText="Rechercher" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="30.0" left="60.0" right="60.0" top="30.0" />
                            </GridPane.margin>

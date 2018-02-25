@@ -1,4 +1,5 @@
 package fr.polytech.ihm;
+
 import javafx.animation.Transition;
 import javafx.scene.layout.Region;
 import javafx.util.Duration;
@@ -8,10 +9,10 @@ import javafx.util.Duration;
  */
     public class VoirDescriptionTransition extends Transition {
 
-        protected Region region;
-        protected double startHeight;
-        protected double newHeight;
-        protected double heightDiff;
+        private Region region;
+        private double startHeight;
+        private double newHeight;
+        private double heightDiff;
         private double maxHeigh;
 
     /**

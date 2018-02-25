@@ -16,5 +16,4 @@ public class IncorrectDeclarationController {
         Stage stage = (Stage) okButton.getScene().getWindow();
         stage.close();
     }
-
 }
