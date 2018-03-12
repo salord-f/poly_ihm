@@ -202,7 +202,7 @@ public class ViewIncidentController {
                 return true;
             }
             String lowCase = newValue.toLowerCase();
-            return incident.getTitle().contains(lowCase) || incident.getEmail().contains(lowCase) || incident.getEmailDomain().contains(lowCase);
+            return incident.getTitle().contains(lowCase) || incident.getEmail().contains(lowCase) || incident.getEmailDomain().contains(lowCase) || incident.getLocationDetail().contains(lowCase);
         }));
     }
 
